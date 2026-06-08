@@ -1,5 +1,5 @@
 /*task 2*/
-.current_news_container {
+/* .current_news_container {
     border: 2px solid black;
     border-radius: 15px;
     margin: 20px;
@@ -8,4 +8,30 @@
 }
 .current_news_container a {
     margin-right: 10px;
+} */
+
+* { /* так мы обращаемся ко всем элементам на странице*/
+    margin: 0;      /*обнуляем внешние поля*/
+    padding: 0;     /*обнуляем внутренние поля*/
+}
+
+
+
+
+#task_8 {
+    display: flex;  /* выравниваем дочерние элементы в один ярус */
+    border: 2px solid rgb(91, 91, 154);
+    margin: 20px;
+    height: max-content;
+}
+#buttons_side {
+    background-color: rgb(91, 91, 154);
+    padding-top: 50px;
+}
+.task_8_button {
+    padding: 10px;      /* внутреннее поле */
+    user-select: none;  /* ставим запрет на выделение текста*/
+}
+.task_8_button:hover {  /* если навелась мышка на данные элементы */
+    cursor: pointer;    /* меняем курсор у мышки*/
 }
