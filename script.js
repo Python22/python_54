@@ -516,49 +516,216 @@
 У каждой вкладки есть свое содержимое, но в один момент
 времени отображается содержимое только активной вкладки. 
 */
-let task_8_text = document.getElementById("task_8_text")            // нашли текстовый блок, в котором будем менять текст
-let all_buttons = document.getElementsByClassName("task_8_button")  // находим все элементы с CSS классом task_8_button и сохраняем в массиве
+// let task_8_text = document.getElementById("task_8_text")            // нашли текстовый блок, в котором будем менять текст
+// let all_buttons = document.getElementsByClassName("task_8_button")  // находим все элементы с CSS классом task_8_button и сохраняем в массиве
 
-for (let current_button of all_buttons) {               // перебираем все кнопки по очереди
-    current_button.addEventListener("click", (e) => {   // каждой кнопке добавляем отслеживание клика по ней
-        console.log(e)                                  // тут можно узнать св-ва события
-        console.log(e.target)                           // кто был тыкнут
-        console.log(e.target.innerHTML)                 // что внутри элемента, на который тыкнули
+// for (let current_button of all_buttons) {               // перебираем все кнопки по очереди
+//     current_button.addEventListener("click", (e) => {   // каждой кнопке добавляем отслеживание клика по ней
+//         console.log(e)                                  // тут можно узнать св-ва события
+//         console.log(e.target)                           // кто был тыкнут
+//         console.log(e.target.innerHTML)                 // что внутри элемента, на который тыкнули
 
-        if (e.target.innerHTML === "HTML") {            // если на кнопке написано HTML
-            // вставляем в текстовый блок тест про HTML
-            task_8_text.innerHTML = `
-                HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
-                HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
-                HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
-                HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
-                HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML `
+//         if (e.target.innerHTML === "HTML") {            // если на кнопке написано HTML
+//             // вставляем в текстовый блок тест про HTML
+//             task_8_text.innerHTML = `
+//                 HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
+//                 HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
+//                 HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
+//                 HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML 
+//                 HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML HTML `
+//         }
+//         else if (e.target.innerHTML === "CSS") {        // если на кнопке написано CSS
+//             // вставляем в текстовый блок тест про CSS
+//             task_8_text.innerHTML = `
+//                 CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
+//                 CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
+//                 CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
+//                 CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
+//                 CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS `
+//         }
+//         else if (e.target.innerHTML === "JS") {         // если на кнопке написано JS
+//             // вставляем в текстовый блок тест про JS
+//             task_8_text.innerHTML = `
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
+//                 JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS `
+//         }
+
+//         for (let btn of all_buttons) {  // перебираем все кнопки
+//             btn.style.backgroundColor = "rgb(91, 91, 154)"  // ставим всем кнопкам цвет фона на обычный
+//         }    
+//         e.target.style.backgroundColor = "aqua"             // а текущей тыкнутой кнопке ставим цвет фона синий
+
+//     })
+// }
+
+
+
+
+
+/**
+ *         Задание 9
+Создать html-страницу со списком новостей. Возле каждой
+новости должна быть кнопка Удалить, при нажатии на которую
+соответствующая новость исчезает
+ */
+
+// let all_remove_buttons = document.getElementsByClassName("remove_post_btn")     // находим все кнопки по CSS классу
+
+// for (let current_button of all_remove_buttons) {                                // перебираем все кнопки по очереди
+//     current_button.addEventListener("click", (e) => {                           // добавляем каждой кнопке обработку клика по ней
+//         console.log(e)                                      // все св-ва события
+//         console.log(e.target)                               // так узнаём какая конкретно кнопка была нажата
+//         console.log(e.target.parentNode)                    // узнаём родительский элемент у кнопки, в нашем случае  <div class="post_header">   
+//         console.log(e.target.parentNode.parentNode)         // узнаём родителя у <div class="post_header">, это будет <div class="post_container">
+//         e.target.parentNode.parentNode.remove()             // удаляем найденный контейнер новости
+//     })
+// }
+
+
+
+
+
+
+// // ПРИМЕРЫ 
+
+// console.log(document.getElementById("example_div"))             
+// // сам элемент
+
+// console.log(document.getElementById("example_div").children)    
+// // коллекция потомков(детей)    HTMLCollection { 0: div#first_div, 1: div#second_div, 2: div#third_div, length: 3, … }
+
+// console.log(document.getElementById("example_div").childNodes)  
+// // тоже коллекция потомков(детей), но с пробелами между ними NodeList(7) [ #text, div#first_div, #text, div#second_div, #text, div#third_div, #text ]
+
+
+// console.log(document.getElementById("example_div").firstElementChild)   // получить первого потомка     <div id="first_div">
+// console.log(document.getElementById("example_div").children[0])         // то же самое
+
+
+// console.log(document.getElementById("example_div").lastElementChild)    // получить последнего потомка  <div id="third_div">
+
+
+
+
+
+
+
+
+
+/**
+ * Задание 10
+    Создать html-страницу с progressbar и кнопкой, при нажатии
+    на которую заполненность progressbar увеличивается на 5%.
+   
+ */
+
+// вариант 1
+// let current_progress_bar = document.getElementById("current_progress_bar")  // находим полоску прогресса, которая будет меняться
+// let progress_value = 20                                                     // текущее значение полоски прогресса в %
+// console.log(progress_value)
+
+// document.getElementById("add_progress_btn").addEventListener("click", () => {   // находим кнопку и добавляем обработку клика по ней
+//     progress_value += 5                                                     // увеличиваем значение прогресса на 5
+//     if (progress_value > 100) {                                             // если знаечние стало больше 100
+//         progress_value = 100                                                // явно ставим на 100
+//     }
+//     current_progress_bar.style.width = progress_value + "%"                 // даём полоске прогресса новую ширину из нашей переменной
+// })
+
+
+
+// let current_progress_bar = document.getElementById("current_progress_bar")  // находим полоску прогресса, которая будет меняться
+// let progress_value = 20                                                     // текущее значение полоски прогресса в %
+// console.log(progress_value)
+
+// document.getElementById("add_progress_btn").addEventListener("click", () => {   // находим кнопку и добавляем обработку клика по ней                                                       // увеличиваем значение прогресса на 5
+//     if (progress_value < 100) {                                             // если знаечние стало больше 100
+//         progress_value += 5                                           // тогда добавляем
+//     }
+//     current_progress_bar.style.width = progress_value + "%"                 // даём полоске прогресса новую ширину из нашей переменной
+// })
+
+
+
+
+
+/**
+ * 
+ * Задание 11
+Создать html-страницу с таблицей.
+При наведении мышкой на ячейку таблицы, у этой ячейки
+должен меняться фон. Учтите, что когда мышку уводят с ячейки,
+то ее фон возвращается к прежнему.
+Выполнить задание с помощью JS, а не с помощью CSS.
+*/
+
+// let all_cells = document.querySelectorAll("#task_11 td")  // найти все ячейки по CSS поиску
+
+// for (let cell of all_cells) {                                   // перебираем все ячейки
+//     cell.addEventListener("mouseenter", (e) => {                // если мышка вошла в зону элемента
+//         e.target.style.backgroundColor = "#885050"              // данной ячейки, на которую навелись, ставим другой цвет фона
+//     })
+
+//     cell.addEventListener("mouseleave", (e) => {                // если мышка вышла из зоны элемента
+//         e.target.style.backgroundColor = "blanchedalmond"       // данной ячейки, на которую навелись, возвращаем цвет фона
+//     })
+// }
+
+
+
+/**
+ * Задание 12
+Создать html-страницу с любым содержимым и запретить
+пользователю выделять текст и вызывать контекстное меню кликом правой кнопки.
+ */
+
+// document.onselectstart = () => { return false }     // выключаем выделение текста
+// document.oncontextmenu = () => { return false }     // выключаем контекстное меню, после нажатия правой кнопкой мыши
+
+
+
+
+
+
+/**
+ *     Задание 13
+Создать html-страницу с кнопкой Like, при нажатии на которую увеличивается счетчик лайков.
+ */
+
+// let likes_btn = document.getElementById("task_13_btn")  // нашли кнопку
+// let likes_counter = 0                                   // счётчик лайков
+
+// likes_btn.addEventListener("click", () => {             // при клике по кнопке вызываем функцию
+//     likes_counter++                                     // увеличиваем значение счётчика на 1
+//     likes_btn.innerHTML = `👍 Like ${likes_counter}`    // меняем текст внутри кнопки на новый, где вместо 0 ставим значение счётчика    
+// })
+
+
+
+
+
+
+/**
+ *     Задание 14
+Создать html-страницу с меню, которое имеет выпадающие списки. 
+Список с элементами подменю должен появляться по
+щелчку на соответствующий элемент меню.
+ */
+let all_first_lvl_buttons = document.getElementsByClassName("first_lvl_menu")       // находим все элементы-кнопки первого уровня
+let all_second_lvl_menu = document.querySelectorAll(".first_lvl_menu ul")           // находим все меню второго уровня у кнопок первого уровня
+
+for (let current_button of all_first_lvl_buttons) {                                 // перебираем все кнопки
+    current_button.addEventListener("click", (e) => {                               // если на кнопку кликнули
+        console.log(e.target.children[0])
+        
+        for (let second_lvl of all_second_lvl_menu) {                               // перебираем все меню второго уровня
+            second_lvl.style.display = "none"                                       // выключаем их
         }
-        else if (e.target.innerHTML === "CSS") {        // если на кнопке написано CSS
-            // вставляем в текстовый блок тест про CSS
-            task_8_text.innerHTML = `
-                CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
-                CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
-                CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
-                CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS 
-                CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS `
-        }
-        else if (e.target.innerHTML === "JS") {         // если на кнопке написано JS
-            // вставляем в текстовый блок тест про JS
-            task_8_text.innerHTML = `
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS 
-                JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS `
-        }
-
-        for (let btn of all_buttons) {  // перебираем все кнопки
-            btn.style.backgroundColor = "rgb(91, 91, 154)"  // ставим всем кнопкам цвет фона на обычный
-        }    
-        e.target.style.backgroundColor = "aqua"             // а текущей тыкнутой кнопке ставим цвет фона синий
-
+        
+        e.target.children[0].style.display = "block"                                // включаем отображение кнопок второго уровня
     })
 }
-

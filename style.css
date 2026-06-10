@@ -35,3 +35,95 @@
 .task_8_button:hover {  /* если навелась мышка на данные элементы */
     cursor: pointer;    /* меняем курсор у мышки*/
 }
+
+
+
+.post_container {
+    margin: 20px;
+}
+.post_header {
+    display: flex;                      /*ставим заголовок и кнопку в 1 ярус*/
+    justify-content: space-between;     /*раскидываем их по краям блока*/
+    margin-bottom: 15px;                /*отступ снизу*/
+}
+.remove_post_btn {
+    font-size: 30px;                    /*размер шрифта у кнопки*/
+    background: none;                   /*выключаем фон*/
+    border: none;                       /*выключаем рамку(обводку)*/
+}
+.remove_post_btn:hover {                /*св-ва элемента при наведении мышкой*/
+    cursor: pointer;                    /*меняем отображение мышки со стрелки на руку*/
+    text-shadow: 0 0 5px black;       /*тень для текста (X Y blur color)*/
+}
+
+
+
+#task_10 {
+    width: 500px;                   /*ширина*/
+    border: 2px solid black;      /*рамка*/  
+    border-radius: 15px;            /*скругление*/
+    padding: 25px;                  /*внутреннее поле*/
+    margin-left: auto;              /*выравниваем блок по центру*/
+    margin-right: auto;
+    text-align: center;             /*ставим все дочерние элементы по центру*/
+}
+#full_progress_bar {
+    border: 1px solid black;      /*рамка контейнера прогресса*/  
+    height: 20px;                   /*высота контейнера прогресса*/
+    width: 100%;                    /*ширина в % от ширины родителя*/
+    border-radius: 15px;            /*скругление*/
+}
+#current_progress_bar {
+    height: 100%;                   /*высоту берём от родителя*/
+    width: 20%;                     /*ширина 20% от родителя*/
+    border-radius: 15px;            /*скругление как у родителя*/
+    background-color: aqua;       /*цвет фона*/  
+} 
+#add_progress_btn {
+    margin-top: 15px;               /*у кнопки делаем отступ сверху*/
+    padding: 5px;                   /*внутренне поле от рамки до текста*/
+}
+
+
+
+
+
+
+#task_11 {
+    border: 3px solid black;    /*рамка у таблицы*/
+    margin-left: auto;              /*выравниваем на центр*/
+    margin-right: auto;
+    border-collapse: collapse;      /*убираем пространство между ячейками таблицы*/
+}
+#task_11 thead td {                 /*ячейки внутри заголовочной части*/
+    font-weight: bold;              /*полужирный текст*/
+    font-size: 16px;                /*размер*/
+    /* background-color: burlywood; */
+}
+#task_11 td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;             /*текст внутри ячейки ставим по центру*/
+    background-color: blanchedalmond;
+}
+
+
+
+#main_menu_list {
+    display: flex;
+    list-style: none;
+}
+.first_lvl_menu {
+    background-color: darkcyan;
+    color: antiquewhite;
+    padding: 5px;
+}
+.first_lvl_menu:hover {
+    cursor: pointer;
+}
+.second_lvl_btn {
+    list-style: none;
+}
+.first_lvl_menu ul {
+    display: none;
+}
