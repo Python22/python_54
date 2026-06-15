@@ -715,17 +715,170 @@
 Список с элементами подменю должен появляться по
 щелчку на соответствующий элемент меню.
  */
-let all_first_lvl_buttons = document.getElementsByClassName("first_lvl_menu")       // находим все элементы-кнопки первого уровня
-let all_second_lvl_menu = document.querySelectorAll(".first_lvl_menu ul")           // находим все меню второго уровня у кнопок первого уровня
+// let all_first_lvl_buttons = document.getElementsByClassName("first_lvl_menu")       // находим все элементы-кнопки первого уровня
+// let all_second_lvl_menu = document.querySelectorAll(".first_lvl_menu ul")           // находим все меню второго уровня у кнопок первого уровня
 
-for (let current_button of all_first_lvl_buttons) {                                 // перебираем все кнопки
-    current_button.addEventListener("click", (e) => {                               // если на кнопку кликнули
-        console.log(e.target.children[0])
+// for (let current_button of all_first_lvl_buttons) {                                 // перебираем все кнопки
+//     current_button.addEventListener("click", (e) => {                               // если на кнопку кликнули
+//         console.log(e.target.children[0])
         
-        for (let second_lvl of all_second_lvl_menu) {                               // перебираем все меню второго уровня
-            second_lvl.style.display = "none"                                       // выключаем их
-        }
+//         for (let second_lvl of all_second_lvl_menu) {                               // перебираем все меню второго уровня
+//             second_lvl.style.display = "none"                                       // выключаем их
+//         }
         
-        e.target.children[0].style.display = "block"                                // включаем отображение кнопок второго уровня
-    })
-}
+//         e.target.children[0].style.display = "block"                                // включаем отображение кнопок второго уровня
+//     })
+// }
+
+
+
+/**
+ *     Задание 15
+Создать html-страницу с возможностью ввода числового значения через кнопки (больше, меньше).
+Пользователь не должен иметь возможность печатать текст
+или цифры. Число изменяется только при нажатии на кнопки.
+ * 
+ */
+// let user_number_elem = document.getElementById("user_number_elem")      // нашли нужный элемент
+// let user_number_value = Number(user_number_elem.innerText)                   // смотрим что там написано и превращаем в число
+
+// document.getElementById("plus_btn").addEventListener("click", () => {   // нашли кнопку добавления и остлеживаем клик по ней
+//     user_number_value++                             // увеличиваем значение числа
+//     user_number_elem.innerText = user_number_value  // ставим значение переменной в нужный для нас блок на странице
+// })
+// document.getElementById("minus_btn").addEventListener("click", () => {   // нашли кнопку уменьшения и остлеживаем клик по ней
+//     user_number_value--                             // уменьшаем значение числа
+//     user_number_elem.innerText = user_number_value  // ставим значение переменной в нужный для нас блок на странице
+// })
+
+
+
+/**
+ * 
+ *     Задание 16
+Создать html-страницу с кнопкой, по нажатию на которую
+добавляются цветные блоки на страницу. По клику на сам блок,
+он должен удаляться со страницы.
+ */
+// function randint(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// };
+
+// let all_color_blocks = document.getElementById("all_color_blocks")          // находим div с нашим id, куда будем вставлять цветные блоки
+
+// document.getElementById("add_color_block").addEventListener("click", () => {    // находим кнопку и отслеживаем клик по ней
+//     let new_color_block = document.createElement("div")     // виртуально создаём элемент с тегом div, на саму страницу добавим его позже
+//     let red = randint(0, 255)                               // создаём случайно число от 0 до 255 для красного канала
+//     let green = randint(0, 255)                             // создаём случайно число от 0 до 255 для зелёного канала
+//     let blue = randint(0, 255)                              // создаём случайно число от 0 до 255 для синего канала
+    
+//     new_color_block.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`    // даём CSS св-во для цвета фона с помощью rgb()
+//     new_color_block.classList.add("color_block")            // даём CSS класс color_block
+
+//     new_color_block.addEventListener("click", (e) => {      // добавляем отслеживание клика по блоку
+//         e.target.remove()                                   // узнаём какой конкретно блок был тыкнут и удаляем его со страницы
+//     })
+
+//     all_color_blocks.append(new_color_block)                // вставляем в конец all_color_blocks наш новый цветной блок          
+
+// })
+
+
+
+
+
+
+
+
+/*
+    Задание 17
+Создать html-страницу с текстом и палитрой цветов.
+При клике на цвет палитры, должен изменяться цвет текста на выбранный. 
+Для указания, какой ячейке какой цвет соответствует,
+можно использовать атрибут data-color в каждой ячейке, а потом
+с помощью JS получать необходимый цвет из этого атрибута.
+*/
+// let task_17_text = document.getElementById("task_17_text")              // нашли текст, который надо менять
+// let all_color_blocks = document.querySelectorAll("#color_palette div")  // находим все нужные цветные блоки по CSS поиску и сохраняем в массив
+
+// for (let current_color_block of all_color_blocks) {                     // перебираем все цветные блоки палитры
+//     current_color_block.addEventListener("click", (e) => {              // отслеживаем клик по данному блоку
+//         console.log(e.target)                                           // <div style="background-color: green;"> элемент, который сработал на событие клика
+//         console.log(e.target.style.backgroundColor)                     // green        CSS св-во цвета фона у кликнутого элемента   
+//         task_17_text.style.color = e.target.style.backgroundColor       // присваиваем тексту цвет, который у блока на фоне
+//     })
+// }
+
+
+
+
+
+
+
+/*
+        Задание 18
+Создать html-страницу со статьей, комментариями к ней и
+формой для добавления нового комментария.
+При нажатии на кнопкуДобавить комментарийформа должна
+очищаться, а комментарий добавляться к списку всех комментариев. 
+Комментарий состоит из имени пользователя, даты и текста. 
+*/
+
+// let all_comments_container = document.getElementById("all_comments_container") // находим блок со всеми комментариями
+// let new_comment_form = document.getElementById("new_comment_form")             // находим нашу форму нового комментария
+// let name_input = document.getElementById("name")                               // находим поле для ввода имени
+// let new_comment_input = document.getElementById("new_comment")                 // находим поле для ввода комментария
+
+// new_comment_form.addEventListener("submit", (e) => {
+//     e.preventDefault()          // останавливаем отправку данных(чтобы странциа не перезагрузилась)
+
+//     let new_comment_div = document.createElement("div")     // создаём div для нового коммента
+//     new_comment_div.classList.add("comment_container")      // даём CSS класс comment_container
+
+//     new_comment_div.innerHTML = `
+//         <h3>${name_input.value}</h3>
+//         <span class="comment_date">${new Date().toLocaleDateString()}</span>
+//         <p class="comment">${new_comment_input.value}</p>
+//         <br><hr>
+//     `   // заполняем новый контейнер коммента данными из формы
+
+//     all_comments_container.append(new_comment_div)      // добавляем коммент на странцицу в блок всех комментов
+
+//     name_input.value = ""                               // очищаем поля ввода имени и коммента
+//     new_comment_input.value = ""
+// })
+
+
+
+
+
+
+
+
+/*
+    Задание 20
+Создать html-страницу со списком статей.
+При прокрутке страницы вниз более чем на 100 пикселей,
+справа внизу должна появиться кнопка Вверх – для быстрого
+перехода к началу страницы.
+*/
+// let to_top_btn = document.getElementById("to_top_btn")      // находим кнопку по её id
+
+// document.addEventListener("scroll", () => {                 // на всю страницу добавляем отслеживание прокрутки
+//     console.log(window.scrollY)                             // насколько пикселей мы прокрутились вниз
+//     if (window.scrollY > 100) {                             // если прокрутились далее 100 пикселей
+//         to_top_btn.style.display = "block"                  // ставим кнопке CSS св-во display в блочный режим, вместо none 
+//     }
+//     else {                                                  // если прокрутка менее 100 пикселей
+//         to_top_btn.style.display = "none"                   // выключаем отображение кнопки
+//     }
+// })
+
+// to_top_btn.addEventListener("click", (e) => {               // отслеживаем клик кнопки
+//     window.scrollTo({                                       // прокручиваем наверх страницы плавно
+//         "top": 0,
+//         "left": 0,
+//         "behavior": "smooth"
+//     })
+// })
+

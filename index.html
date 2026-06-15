@@ -316,7 +316,7 @@
 щелчку на соответствующий элемент меню.
  -->
 
-    <nav id="main_menu">
+    <!-- <nav id="main_menu">
         <ul id="main_menu_list">
             <li class="first_lvl_menu">Home
                 <ul>
@@ -348,8 +348,313 @@
                 </ul>
             </li>
         </ul>
-    </nav> 
+    </nav>  -->
     
+
+
+<!-- 
+    Задание 15
+Создать html-страницу с возможностью ввода числового значения через кнопки (больше, меньше).
+Пользователь не должен иметь возможность печатать текст
+или цифры. Число изменяется только при нажатии на кнопки.
+ -->
+    <!-- <div id="task_15">
+        <p id="user_number_elem">0</p>
+        <div id="number_controller">
+            <button id="plus_btn">🔺</button>
+            <button id="minus_btn">🔻</button>
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+
+<!-- 
+    Задание 16
+Создать html-страницу с кнопкой, по нажатию на которую
+добавляются цветные блоки на страницу. 
+По клику на сам блок, он должен удаляться со страницы.
+ -->
+
+    <!-- <div id="task_16">
+        <div id="all_color_blocks"></div>
+        <button id="add_color_block">Add block</button>
+    </div> -->
+
+
+
+<!-- 
+    Задание 17
+Создать html-страницу с текстом и палитрой цветов.
+При клике на цвет палитры, должен изменяться цвет текста на
+выбранный. Для указания, какой ячейке какой цвет соответствует,
+можно использовать атрибут data-color в каждой ячейке, а потом
+с помощью JS получать необходимый цвет из этого атрибута.
+ -->
+    <!-- <div id="task_17">
+        <div id="color_palette">
+            <div style="background-color: black;"></div>
+            <div style="background-color: gray;"></div>
+            <div style="background-color: white;"></div>
+            <div style="background-color: red;"></div>
+            <div style="background-color: orange;"></div>
+            <div style="background-color: yellow;"></div>
+            <div style="background-color: greenyellow;"></div>
+            <div style="background-color: green;"></div>
+            <div style="background-color: aqua;"></div>
+            <div style="background-color: blue;"></div>
+        </div>
+        <p id="task_17_text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptates, expedita nam delectus eos minima accusantium odio ea, voluptate veritatis consectetur vero sapiente nostrum, ab ullam quidem quam nobis tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptates, expedita nam delectus eos minima accusantium odio ea, voluptate veritatis consectetur vero sapiente nostrum, ab ullam quidem quam nobis tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptates, expedita nam delectus eos minima accusantium odio ea, voluptate veritatis consectetur vero sapiente nostrum, ab ullam quidem quam nobis tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptates, expedita nam delectus eos minima accusantium odio ea, voluptate veritatis consectetur vero sapiente nostrum, ab ullam quidem quam nobis tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptates, expedita nam delectus eos minima accusantium odio ea, voluptate veritatis consectetur vero sapiente nostrum, ab ullam quidem quam nobis tempora?
+        </p>
+    </div> -->
+
+
+
+
+    <!-- 
+        Задание 18
+Создать html-страницу со статьей, комментариями к ней и
+формой для добавления нового комментария.
+При нажатии на кнопкуДобавить комментарийформа должна
+очищаться, а комментарий добавляться к списку всех комментариев. 
+Комментарий состоит из имени пользователя, даты и текста. 
+     -->
+    <!-- <div id="task_18">
+        <div id="article">
+            <h2>What is lorem ipsum?</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus similique nihil explicabo magni tempore neque voluptatum, officia maxime, autem eius repellendus saepe animi! Recusandae, quibusdam qui quae necessitatibus magnam assumenda?
+            </p>
+            <br><hr>
+        </div>
+
+        <div id="all_comments_container">
+            <div class="comment_container">
+                <h3>Antoine</h3>
+                <span class="comment_date">22.12.2020</span>
+                <p class="comment">Best comment!!!! BEST ARTICLE!!!!111</p>
+                <br><hr>
+            </div>
+        </div>
+
+        <form id="new_comment_form" action="">
+            <h3>Leave your comment</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="new_comment">Comment:</label>
+            <br>
+            <textarea name="new_comment" id="new_comment" cols="100" rows="10" required></textarea>  
+            <br>
+            <button id="add_comment_btn">Add comment</button>  
+             <input type="submit" value="Add comment"> 
+        </form>
+    </div> -->
+
+
+
+
+<!-- 
+    Задание 19
+Создать html-страницу с текстовым полем для ввода страны.
+При вводе пользователем страны, под текстовым полем должен
+появляться выпадающий список с подсказками (максимум 10 штук).
+Подсказки зависят от того, что ввел пользователь. Данные
+для подсказок храните в массиве, которые заранее создайте и
+заполните странами. При щелчке на подсказку ее текст должен
+вводится в input.
+ -->
+    <!-- способ 1 -->
+    <!-- <select name="all_countries" id="all_countries">
+        <option value="Russia">Russia</option>
+        <option value="USA">USA</option>
+        <option value="Germany">Germany</option>
+        <option value="Spain">Spain</option>
+        <option value="Italy">Italy</option>
+        <option value="Romania">Romania</option>
+    </select> -->
+
+    <!-- способ 2 -->
+    <!-- <input type="text" id="all_countries_2" list="countries_list">
+
+    <datalist id="countries_list">
+        <option value="Russia">Russia</option>
+        <option value="USA">USA</option>
+        <option value="Germany">Germany</option>
+        <option value="Spain">Spain</option>
+        <option value="Italy">Italy</option>
+        <option value="Romania">Romania</option>
+    </datalist> -->
+
+
+<!-- 
+    Задание 20
+Создать html-страницу со списком статей.
+При прокрутке страницы вниз более чем на 100 пикселей,
+справа внизу должна появиться кнопка Вверх – для быстрого
+перехода к началу страницы.
+ -->
+    <!-- <div id="task_20">
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem tempora exercitationem tempore asperiores iste quibusdam est sit commodi quod voluptates quae perferendis expedita veniam, magnam illo, vitae debitis numquam. Modi?
+        </p>
+        <button id="to_top_btn">🔺</button>
+    </div> -->
+
+
+<!-- Задание 21
+Создать html-страницу «Калькулятор». 
+Реализовать его функциональность. -->
+
+    <div id="calculator">
+        <div id="calc_display"></div>
+        <table id="calc_buttons">
+            <tr>
+                <td>7</td><td>8</td><td>9</td><td>+</td>
+            </tr>
+            <tr>
+                <td>4</td><td>5</td><td>6</td><td>-</td>
+            </tr>
+            <tr>
+                <td>1</td><td>2</td><td>3</td><td>*</td>
+            </tr>
+            <tr>
+                <td>C</td><td>0</td><td>=</td><td>/</td>
+            </tr>
+        </table>
+    </div>
+
 
     <script src="script.js"></script>
 </body>
