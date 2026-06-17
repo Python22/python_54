@@ -882,3 +882,190 @@
 //     })
 // })
 
+
+
+
+
+
+
+/**
+ * Задание 21
+Создать html-страницу «Калькулятор». 
+Реализовать его функциональность.
+ */
+
+// let calc_display = document.getElementById("calc_display")              // ищем дисплей по id
+// let all_calc_buttons = document.querySelectorAll("#calc_buttons td")    // ищем все кнопки по CSS поиску, получаем массив
+
+// let first_number = ""           // тут будем набирать первое число
+// let second_number = ""          // тут будем набирать второе число
+// let current_number = "first"    // тут запоминаем, какое именно число сейчас набирается из кнопок с цифрами
+// let action = ""                 // тут будем держать какое математическое действие надо будет выполнить (+-*/)
+
+// for (let button of all_calc_buttons) {                      // перебираем все кнопки
+//     button.addEventListener("click", (e) => {               // каждой кнопке добавляем отслеживание клика
+//         console.log(e.target)                               // так можно узнать какая именно кнопка была нажата
+//         console.log(e.target.innerText)                     // так узнаём что написано на самой кнопке
+
+//         let button_symbol = e.target.innerText              // сохраняем в переменную символ нажатой кнопки
+
+//         if ("0123456789".includes(button_symbol)) {         // если символ нажатой кнопки есть среди указанной строки из цифр, то тогда это была нажата цифра
+//             if (current_number === "first") {               // если мы сейчас набираем первое число
+//                 first_number += button_symbol               // добавляем цифру нажатой кнопки в первое число 
+//                 calc_display.innerHTML = first_number       // вставляем первое число внутрь дисплея
+//             } 
+//             else if (current_number === "second") {         // если мы сейчас набираем второе число
+//                 second_number += button_symbol              // добавляем кликнутую цифру ко второму числу
+//                 calc_display.innerHTML = `${first_number} ${action} ${second_number}`   // пишем на дисплее первое число, дейсвтие, второе число
+//             }
+//         }
+
+//         else if ("+-*/".includes(button_symbol)) {          // если символ нажатой кнопки есть среди + - * /
+//             action = button_symbol                          // запоминаем символ математического действия, которе нажал пользователь
+//             if (current_number === "second") {              // если мы набирали второе число и нажали на математическое действие
+//                 calculate_result()                          // вызываем расчёт ответа
+//             }
+//             calc_display.innerHTML = `${first_number} ${action}`    // пишем на дисплее калькулятора первое число, пробел, выбранное действие
+//             current_number = "second"                       // запоминаем что сейчас уже будем набирать второе число
+//         }
+
+//         else if (button_symbol === "=") {                   // если был нажат =
+//             calculate_result()                              // вызываем функцию расчёта ответа
+//         }
+
+//         else if (button_symbol === "C") {                   // если был нажат C
+//             first_number = ""                             // сбрасываем все значения до пустых
+//             second_number = ""
+//             current_number = "first"  
+//             action = ""
+//             calc_display.innerHTML = 0
+//         }
+
+//     })
+// }
+
+// function calculate_result() {           // функция расчёта резултата в калькуляторе
+//     switch (action) {                   // проверяем переменную action на известные значения    (аналог match case из python)
+//         case "+":                       // если action это +
+//             first_number = Number(first_number) + Number(second_number)         // считаем сумму и сохраняем в первое число
+//             break                                                               // прекращаем работу следующих кейсов
+//         case "-":                       // если action это -
+//             first_number = Number(first_number) - Number(second_number)        // считаем разность и сохраняем в первое число    
+//             break
+//         case "*":                       // если action это *
+//             first_number = Number(first_number) * Number(second_number)         // считаем произведение и сохраняем в первое число    
+//             break
+//         case "/":                       // если action это /
+//             first_number = Number(first_number) - Number(second_number)         // считаем разность и созраняем в первое число        
+//             break
+//     }
+//     calc_display.innerHTML = first_number                       // вставляем в дисплей посчитанный результат, который лежит в первом числе
+//     second_number = ""                                          // сбрасываем второе число
+//     current_number = "first"                                    // запоминаем что мы сйечас набираем первое число
+// }
+
+
+
+
+
+
+
+/**
+ *     Задание 22
+Создать html-страницу со светофором и кнопкой, которая
+переключает светофор на следующий цвет.
+ */
+
+// let red_light = document.getElementById("red_light")            // находим наши div с "лампочками"
+// let yellow_light = document.getElementById("yellow_light")
+// let green_light = document.getElementById("green_light")
+
+// let current_light_index = 0             // индекс текущей лампочки  0 - красная, 1 - жёлтая, 2 - зелёная
+// red_light.style.backgroundColor = "red" // ставим красной лампочке цвет фона с серого на красный
+
+// document.getElementById("next_light_btn").addEventListener("click", () => {     // нашли кнопку и отслеживаем клик по ней
+//     current_light_index++           // увеличиваем индекс лампочки
+//     if (current_light_index > 2) {  // если он стал больше 2
+//         current_light_index = 0     // ставим его на 0
+//     }
+
+//     red_light.style.backgroundColor = "gray"        // сбрасываем всем лампочкам цвет на серый
+//     yellow_light.style.backgroundColor = "gray"
+//     green_light.style.backgroundColor = "gray"
+
+//     // проверяем какую лампочку надо включить
+//     if (current_light_index === 0) {                // если индекс равняется 0
+//         red_light.style.backgroundColor = "red"     // красной вклчюаем цвет фона
+//     }
+//     else if (current_light_index === 1) {
+//         yellow_light.style.backgroundColor = "yellow"
+//     }
+//     else if (current_light_index === 2) {
+//         green_light.style.backgroundColor = "green"
+//     }
+// })
+
+
+
+
+
+
+/*
+    Задание 23
+Создать html-страницу с формой для логина пользователя и
+галочкой «Запомнить меня». 
+После заполнения формы вывести на экран: «Привет, Имя! Я тебя запомнил/не запомнил». 
+*/
+
+// let login_input = document.getElementById("login")                  // находим нужные поля
+// let password_input = document.getElementById("password")
+// let remember_me_input = document.getElementById("remember_me")
+
+// document.getElementById("task_23").addEventListener("submit", (e) => {  // находим форму и добавляем отслеживание отправки формы
+//     let login = login_input.value
+//     let password = password_input.value
+
+//     if (remember_me_input.checked) {
+//         alert(`Привет ${login}. Я тебя запомнил!`)
+//     }
+//     else {
+//         alert(`Привет ${login}. Я тебя НЕ запомнил!`)
+//     }
+//     e.preventDefault()
+// })
+
+
+
+
+
+
+
+
+/*
+    Задание 24
+Создать html-страницу с палитрой цветов и формой для добавления нового цвета. 
+После заполнения формы новый цвет должен добавиться в палитру.
+*/
+let red_input = document.getElementById("red_input")
+let green_input = document.getElementById("green_input")
+let blue_input = document.getElementById("blue_input")
+let all_color_blocks = document.getElementById("all_color_blocks")
+
+document.getElementById("add_color_form").addEventListener("submit", (e) => {
+    let new_color_block = document.createElement("div")     // создаём виртуальный div
+
+    let red = red_input.value                               // берём введённые значения в инпутах   красный канал
+    let green = green_input.value                           // зелёный канал
+    let blue = blue_input.value                             // синий
+
+    // заполняем внутренность созданного div'а
+    new_color_block.innerHTML = `
+        <div style="background-color: rgb(${red},${green},${blue})"></div>
+        <span>RGB(${red},${green},${blue})</span>
+    `
+    new_color_block.classList.add("color_block")    // даём CSS-
+    all_color_blocks.append(new_color_block)        // вставляем на страницу в конец all_color_blocks созданный div
+    e.preventDefault()                              // предотвращаем обновление страницы
+})
+
+

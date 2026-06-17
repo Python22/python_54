@@ -637,7 +637,7 @@
 Создать html-страницу «Калькулятор». 
 Реализовать его функциональность. -->
 
-    <div id="calculator">
+    <!-- <div id="calculator">
         <div id="calc_display"></div>
         <table id="calc_buttons">
             <tr>
@@ -653,7 +653,79 @@
                 <td>C</td><td>0</td><td>=</td><td>/</td>
             </tr>
         </table>
+    </div> -->
+
+
+<!-- 
+    Задание 22
+Создать html-страницу со светофором и кнопкой, которая
+переключает светофор на следующий цвет.
+ -->
+    <!-- <div id="task_22">
+        <div id="traffic_light">
+            <div class="lights" id="red_light"></div>
+            <div class="lights" id="yellow_light"></div>
+            <div class="lights" id="green_light"></div>
+        </div>
+        <button id="next_light_btn">Next</button>
+    </div> -->
+
+
+<!-- 
+    Задание 23
+Создать html-страницу с формой для логина пользователя и
+галочкой «Запомнить меня». После заполнения формы вывести на
+экран: «Привет, Имя! Я тебя запомнил/не запомнил». 
+ -->
+
+    <!-- <form action="" id="task_23">
+        <label for="login">Your login:</label>
+        <br>
+        <input type="text" name="login" id="login" required>
+        <br>
+
+        <label for="password">Your password:</label>
+        <br>
+        <input type="password" name="password" id="password" required>
+        <br>
+
+        <label for="remember_me">Remember me:</label>
+        <input type="checkbox" name="remember_me" id="remember_me">
+
+        <br>
+        <input type="submit" value="Sign in" id="sign_in_btn">
+
+        <br>
+        <a href="#" id="forgot_btn">Forgot password?</a>    
+    </form> -->
+
+
+
+
+
+<!-- 
+    Задание 24
+Создать html-страницу с палитрой цветов и формой для добавления нового цвета. 
+После заполнения формы новый цвет должен добавиться в палитру.
+ -->
+    <form action="" id="add_color_form">
+        <div id="rgb_container">
+            <label for="red_input">R</label>
+            <input type="number" min="0" max="255" required value="0" id="red_input">
+
+            <label for="green_input">G</label>
+            <input type="number" min="0" max="255" required value="0" id="green_input">
+
+            <label for="blue_input">B</label>
+            <input type="number" min="0" max="255" required value="0" id="blue_input">
+        </div>
+        <input type="submit" value="Add color block" id="add_color_btn">
+    </form>
+
+    <div id="all_color_blocks">
+
     </div>
+
 
 
     <script src="script.js"></script>
