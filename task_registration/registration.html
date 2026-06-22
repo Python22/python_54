@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    
+    <form action="user_info.html" id="registration_form" method="post">
+        <h2>Registration</h2>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>    
+
+        <label for="password2">Repeat password:</label><br>
+        <input type="password" id="password2" name="password2" required><br><br>    
+
+        <input type="submit" value="Sign up" id="submit_btn">
+
+        <p id="error_messages_elem" style="display: none;"></p>
+    </form>
+
+    <script src="registration.js"></script>
+</body>
+</html>

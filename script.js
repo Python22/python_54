@@ -1046,26 +1046,292 @@
 Создать html-страницу с палитрой цветов и формой для добавления нового цвета. 
 После заполнения формы новый цвет должен добавиться в палитру.
 */
-let red_input = document.getElementById("red_input")
-let green_input = document.getElementById("green_input")
-let blue_input = document.getElementById("blue_input")
-let all_color_blocks = document.getElementById("all_color_blocks")
+// let red_input = document.getElementById("red_input")
+// let green_input = document.getElementById("green_input")
+// let blue_input = document.getElementById("blue_input")
+// let all_color_blocks = document.getElementById("all_color_blocks")
 
-document.getElementById("add_color_form").addEventListener("submit", (e) => {
-    let new_color_block = document.createElement("div")     // создаём виртуальный div
+// document.getElementById("add_color_form").addEventListener("submit", (e) => {
+//     let new_color_block = document.createElement("div")     // создаём виртуальный div
 
-    let red = red_input.value                               // берём введённые значения в инпутах   красный канал
-    let green = green_input.value                           // зелёный канал
-    let blue = blue_input.value                             // синий
+//     let red = red_input.value                               // берём введённые значения в инпутах   красный канал
+//     let green = green_input.value                           // зелёный канал
+//     let blue = blue_input.value                             // синий
 
-    // заполняем внутренность созданного div'а
-    new_color_block.innerHTML = `
-        <div style="background-color: rgb(${red},${green},${blue})"></div>
-        <span>RGB(${red},${green},${blue})</span>
-    `
-    new_color_block.classList.add("color_block")    // даём CSS-
-    all_color_blocks.append(new_color_block)        // вставляем на страницу в конец all_color_blocks созданный div
-    e.preventDefault()                              // предотвращаем обновление страницы
-})
+//     // заполняем внутренность созданного div'а
+//     new_color_block.innerHTML = `
+//         <div style="background-color: rgb(${red},${green},${blue})"></div>
+//         <span>RGB(${red},${green},${blue})</span>
+//     `
+//     new_color_block.classList.add("color_block")    // даём CSS-
+//     all_color_blocks.append(new_color_block)        // вставляем на страницу в конец all_color_blocks созданный div
+//     e.preventDefault()                              // предотвращаем обновление страницы
+// })
+
+
+
+
+
+
+
+/*
+Регулярные выражения
+Regular Expressions
+*/
+
+// // есть ли символ k в любом месте строки
+// console.log(/k/.test("vasya"))          // false
+// console.log(/k/.test("nikolay"))        // true
+// console.log(/k/.test("knlay"))          // true
+// console.log(/k/.test("Knlay"))          // false
+
+
+
+// // есть ли символы kol в любом месте строки
+// console.log(/kol/.test("vasya"))          // false
+// console.log(/kol/.test("nikolay"))        // true
+// console.log(/kol/.test("konlay"))         // false
+// console.log(/kol/.test("Knlay"))          // false
+
+
+
+
+// // есть ли символ 5 в любом месте строки
+// console.log(/5/.test("12367"))          // false
+// console.log(/5/.test("51235512"))       // true
+// console.log(/5/.test("konlay"))         // false
+// console.log(/5/.test("Knlay5"))         // true
+
+
+
+
+// // есть ли любая цифра в любом месте строки
+// // \d - цифра от 0 до 9
+// console.log(/\d/.test("12367"))          // true
+// console.log(/\d/.test("51235512"))       // true
+// console.log(/\d/.test("konlay"))         // false
+// console.log(/\d/.test("Knlay5"))         // true
+
+
+
+// // есть ли любой символ НЕ цифры в любом месте строки
+// // \D - НЕ цифра ... (буквы, пробелы, знаки препинания...)
+// console.log(/\D/.test("12367"))          // false
+// console.log(/\D/.test("51235512"))       // false
+// console.log(/\D/.test("konlay"))         // true
+// console.log(/\D/.test("Knlay5"))         // true
+
+
+
+// // есть ли любой символ ПЕЧАТАЕМЫЙ в любом месте строки
+// // \w - печатаемый символ ... (буквы, цифры, знаки препинания, _)
+// console.log(/\w/.test("12367"))          // true
+// console.log(/\w/.test("51235512"))       // true
+// console.log(/\w/.test("konlay"))         // true
+// console.log(/\w/.test("Knlay5"))         // true
+// console.log(/\w/.test("    "))           // false
+// console.log(/\w/.test("\n"))            // false
+
+
+
+// // есть ли любой символ ПЕЧАТАЕМЫЙ в любом месте строки
+// // \W - НЕ печатаемый символ ... (буквы, цифры, знаки препинания, _)
+// console.log(/\W/.test("12367"))          // false
+// console.log(/\W/.test("51235512"))       // false
+// console.log(/\W/.test("konlay"))         // false
+// console.log(/\W/.test("Knlay5"))         // false
+// console.log(/\W/.test("    "))           // true
+// console.log(/\W/.test("\n"))            // true
+
+
+
+
+// // есть ли 4 подряд идущих печатаемых символа(буквы, цифры, знаки препинания, _) ПЕЧАТАЕМЫЙ в любом месте строки
+// // \w - печатаемый символ ... (буквы, цифры, знаки препинания, _)
+// console.log(/\w\w\w\w/.test("123 67"))          // false
+// console.log(/\w\w\w\w/.test("51235512"))       // true
+// console.log(/\w\w\w\w/.test("konlay"))         // true
+// console.log(/\w\w\w\w/.test("Knlay 5"))         // true
+// console.log(/\w\w\w\w/.test("    "))           // false
+// console.log(/\w\w\w\w/.test("\n"))            // false
+
+
+
+
+// // есть ли 1 символ от a до z в любом месте строки
+// // [a-z] - символ от a до z
+// console.log(/[a-z]/.test("123 67"))          // false
+// console.log(/[a-z]/.test("51235512"))       // false
+// console.log(/[a-z]/.test("konlay"))         // true
+// console.log(/[a-z]/.test("Knlay 5"))         // true
+// console.log(/[a-z]/.test("KONLA5"))         // false
+// console.log(/[a-z]/.test("    "))           // false
+// console.log(/[a-z]/.test("\n"))            // false
+
+
+
+
+// // есть ли 1 символ от a до z и A до Z в любом месте строки
+// // [a-zA-Z] - любая латинская буква
+// console.log(/[a-zA-Z]/.test("123 67"))          // false
+// console.log(/[a-zA-Z]/.test("51235512"))       // false
+// console.log(/[a-zA-Z]/.test("konlay"))         // true
+// console.log(/[a-zA-Z]/.test("Knlay 5"))         // true
+// console.log(/[a-zA-Z]/.test("KONLA5"))         // true
+// console.log(/[a-zA-Z]/.test("    "))           // false
+// console.log(/[a-zA-Z]/.test("\n"))            // false
+
+
+// // есть ли 1 символ от a до z в любом месте строки с выключаенным регистром
+// // [a-z]i - символ от a до z        i выключает регистрочувствительность
+// console.log(/[a-z]/i.test("123 67"))          // false
+// console.log(/[a-z]/i.test("51235512"))       // false
+// console.log(/[a-z]/i.test("konlay"))         // true
+// console.log(/[a-z]/i.test("Knlay 5"))         // true
+// console.log(/[a-z]/i.test("KONLA5"))         // false
+// console.log(/[a-z]/i.test("    "))           // false
+// console.log(/[a-z]/i.test("\n"))            // false
+
+
+
+
+
+
+// // есть ли 1 символ из этой группы в любом месте строки
+// // [abcd] - 1 любой символ из этой группы
+// console.log(/[abcd]/.test("123 67"))          // false
+// console.log(/[abcd]/.test("51235512"))       // false
+// console.log(/[abcd]/.test("konlay"))         // true
+// console.log(/[abcd]/.test("Knlay 5"))         // true
+// console.log(/[abcd]/.test("KONLA5"))         // false
+// console.log(/[abcd]/.test("    "))           // false
+// console.log(/[abcd]/.test("\n"))            // false
+
+
+
+// // есть ли 1 символ из этой группы в любом месте строки
+// // [а-я] - 1 любой символ из этой группы
+// // в кириллице буква ё должна обязательно дописываться в группу
+// console.log(/[а-я]/.test("вася"))           // true
+// console.log(/[а-я]/.test("ВАСЯ"))           // false
+// console.log(/[а-я]/.test("ё"))              // false
+// console.log(/[а-яё]/.test("ё"))             // true
+
+
+
+// есть ли 1 символ из этой группы в любом месте строки
+// [0-5] - 1 любой символ  от 0 до 5
+// в кириллице буква ё должна обязательно дописываться в группу
+// console.log(/[0-5]/.test("66899"))           // false
+// console.log(/[0-5]/.test("ВАСЯ"))           // false
+// console.log(/[0-5]/.test("ё"))              // false
+// console.log(/[0-5]/.test("9874078"))             // true
+
+
+
+
+
+// // есть ли 1 символ от a до z и A до Z в любом месте строки
+// // [a-zA-Z]{6} - 6 любых латинских букв друг за другом
+// console.log(/[a-zA-Z]{6}/.test("123 67"))          // false
+// console.log(/[a-zA-Z]{6}/.test("51235512"))       // false
+// console.log(/[a-zA-Z]{6}/.test("konlay"))         // true
+// console.log(/[a-zA-Z]{6}/.test("Knlay 5"))         // false
+// console.log(/[a-zA-Z]{6}/.test("KONLA5"))         // false
+// console.log(/[a-zA-Z]{6}/.test("    "))           // false
+// console.log(/[a-zA-Z]{6}/.test("\n"))            // false
+
+
+
+// // есть ли 1 символ от a до z и A до Z в в самом начале
+// // [a-zA-Z]{6} - 6 любых латинских букв друг за другом      ^ указывает на начало
+// console.log(/^[a-zA-Z]{6}/.test("123 67"))          // false
+// console.log(/^[a-zA-Z]{6}/.test("51235512"))       // false
+// console.log(/^[a-zA-Z]{6}/.test("konlay"))         // true
+// console.log(/^[a-zA-Z]{6}/.test("5konlay"))         // false
+// console.log(/^[a-zA-Z]{6}/.test("Knlay 5"))         // false
+// console.log(/^[a-zA-Z]{6}/.test("KONLA5"))         // false
+// console.log(/^[a-zA-Z]{6}/.test("    "))           // false
+// console.log(/^[a-zA-Z]{6}/.test("\n"))            // false
+
+
+
+// // есть ли 1 символ от a до z и A до Z в в самом конце
+// // [a-zA-Z]{6} - 6 любых латинских букв друг за другом      $ указывает на конец строки
+// console.log(/[a-zA-Z]{6}$/.test("123 67"))          // false
+// console.log(/[a-zA-Z]{6}$/.test("51235512"))       // false
+// console.log(/[a-zA-Z]{6}$/.test("konlay"))         // true
+// console.log(/[a-zA-Z]{6}$/.test("5konlay"))         // true
+// console.log(/[a-zA-Z]{6}$/.test("Knlay 5"))         // false
+// console.log(/[a-zA-Z]{6}$/.test("KONLA5"))         // false
+// console.log(/[a-zA-Z]{6}$/.test("    "))           // false
+// console.log(/[a-zA-Z]{6}$/.test("\n"))            // false
+
+
+// ^ - начало строки
+// \w - буквы, цифры, . _
+// {2,255} - кол-во
+// ^\w{2,255} - должно начинаться от 2 до 255 символов группы (буквы, цифры, . _)
+// @ - требуется собачка
+// ^\w{255} - от 2 до 255 символов группы (буквы, цифры, . _)
+// \. - точка(обязательно со \)
+// [a-zA-Z]{2,10}   - от 2 до 10 английскиз букв
+// $        строка должна закончиться
+
+// console.log(/^\w{2,255}@\w{2,255}\.[a-zA-Z]{2,10}$/.test("asy_a32@gmail.com"))  // true
+// console.log(/^\w{2,255}@\w{2,255}\.[a-zA-Z]{2,10}$/.test("asy_a32gmail.com"))   // false    
+// // самая простая и примитивная проверка почты по шаблону
+// // asy_a32@gmail.com
+
+
+
+// console.log(/(?:[a-z0-9!#$%&'*+/=?^_{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test("asy_a32@gmail.com"))
+
+
+
+
+
+/*
+Есть некоторый текст из нескольких предложений, надо разбить её на массив предложений.
+Пример текста: 
+Вася ушёл. Петя пришёл! Где они?
+*/
+
+// // способ 1, простой линейный
+// let text = "Вася ушёл. Петя пришёл! Где они?"   // исходный текст
+// let all_sentences = []                          // пустой массив, куда будем складывать предложения
+// let current_sentence = ""                       // текущее набираемое предложение из символов
+
+// for (let char of text) {                        // перебираем каждый символ текста по очереди
+//     if (".!?".includes(char)) {                 // если данный символ является . ! или ?, то это предложение закончилось
+//         all_sentences.push(current_sentence.trim())    // добавляем набранное предложение(удаляем пробелы с краёв) в конец массива предложение
+//         current_sentence = ""                   // сбрасываем набранное предложение для набора следующего
+//     }
+//     else {                                      // если это не символ окончания предложения
+//         current_sentence += char                // тогда данный символ добавляем в текущее предложение
+//     }
+// }
+
+// console.log(text)                               // Вася ушёл. Петя пришёл! Где они?
+// console.log(all_sentences)                      //  [ "Вася ушёл", "Петя пришёл", "Где они" ]
+
+
+
+// способ 2, через RegExp
+// разбиваем строку через метод split + regexp
+// let text = "Вася ушёл. Петя пришёл! Где они?"   // исходный текст
+
+// console.log(text)                               // Вася ушёл. Петя пришёл! Где они?
+// console.log(text.split(/\.|\?|!/))              // [ "Вася ушёл", " Петя пришёл", " Где они", "" ]
+// // разделитель это . ИЛИ ? ИЛИ !
+
+// let all_sentences = []                          // создали массив предложений
+// for (let sentence of text.split(/\.|\?|!/)) {   // перебираем [ "Вася ушёл", " Петя пришёл", " Где они", "" ] по очереди
+//     if (sentence) {                             // если предложение не пустое
+//         all_sentences.push(sentence.trim())     // убираем с краёв у предложения пробелы и добавляем в массив всех предложений
+//     }
+// }
+
+// console.log(all_sentences)                      // [ "Вася ушёл", "Петя пришёл", "Где они" ]
 
 
