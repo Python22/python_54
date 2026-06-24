@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#header_logo_search {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+#city_search_input {
+    margin-top: 30px;
+}
+#header_logo_search h1 {
+    color: aqua;
+}
+
+#main_menu {
+    background-color: cadetblue;
+}
+.main_menu_btn {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 15px;
+}
+.main_menu_btn:hover {
+    text-shadow: 0 0 10px aqua;
+    border-bottom: 1px solid aqua;
+    padding-bottom: 0;
+}
+
+main {
+    background-color: gray;
+    padding: 20px;
+}
+#current_weather_header {
+    display: flex;
+    justify-content: space-between;
+    color: aqua;
+    font-size: 20px;
+    font-weight: bold;
+}
+#current_weather_data {
+    display: flex;
+    justify-content: space-around;
+}
+#current_weather_temperature {
+    font-size: 40px;
+}

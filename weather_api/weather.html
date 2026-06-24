@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <header>
+        <div id="header_logo_search">
+            <h1>MY WEATHER</h1>
+            <form action="" id="search_city_form">
+                <input type="text" id="city_search_input" name="city_search_input" required placeholder="London">
+            </form>
+        </div>
+
+        <nav id="main_menu">
+            <a href="#" class="main_menu_btn">Today</a>
+            <a href="#" class="main_menu_btn">5-day forecast</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <div id="current_weather_container">
+            <div id="current_weather_header">
+                <h2>CURRENT WEATHER</h2>
+                <p id="current_date">24.06.26</p>
+            </div>
+
+            <div id="current_weather_data">
+                <div>
+                    <img src="" alt="weather_image" id="current_weather_image">
+                    <p id="current_weather_description">Sunny</p>
+                </div>
+
+                <div>
+                    <p id="current_weather_temperature">0</p>
+                    <p id="current_weather_feelslike">0</p>
+                </div>
+
+                <div>
+                    <table>
+                        <tr>
+                            <td>Sunrise:</td><td id="current_weather_sunrise">00:00:00</td>
+                        </tr>
+                        <tr>
+                            <td>Sunset:</td><td id="current_weather_sunset">00:00:00</td>
+                        </tr>
+                        <tr>
+                            <td>Duration:</td><td id="current_weather_duration">00:00:00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="weather.js"></script>
+</body>
+</html>

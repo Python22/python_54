@@ -44,6 +44,9 @@ document.getElementById("registration_form").addEventListener("submit", (e) => {
         error_messages_elem.style.color = "red"                 // даём красный цвет    
         e.preventDefault()       // предотвращаем обновление странцы                               
     }    
+
+    document.cookie = `email=${email_input.value};max-age=60;path=/`    // сохраняем даныне в куки на 60 секунд
+    document.cookie = `password=${password_input.value};max-age=60;path=/`    // сохраняем даныне в куки на 60 секунд
     
 })
 
