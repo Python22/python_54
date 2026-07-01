@@ -1,0 +1,60 @@
+VS code
+1. Создали папку и выбрали её в vs code
+2. Открываем терминал ctrl + `      (view -> terminal)  (` - ё)
+3. В терминале вводим:
+    python -m venv .venv
+    Так мы создадим виртуальное окружение python в папке .venv
+4. Далее надо переключиться на него(активировать его). В терминале пишем:
+    .venv\Scripts\activate.ps1
+    После выполнения в начале пути в терминале должен появиться (.venv) 
+    (.venv) PS C:\python54_django_01> 
+5. Далее ставим django. В терминале: 
+    pip install django     
+6. После установки создаём проект django. В терминале:
+    django-admin startproject lesson_01_proj
+    Должна появиться папка lesson_01_proj. В ней тоже папка и manage.py
+7. Нужно войти в папку с проектом. В терминале:
+    cd lesson_01_proj
+    Теперь путь будет примерно такой: (.venv) PS C:\python54_django_01\lesson_01_proj> 
+8. Теперь в проекте создадим приложение. В терминале:
+    python manage.py startapp lesson_01_app
+    Должна появиться соотвнетсвующая папка с приложением внутри проекта.
+9. Далее запустим сервер с нашим приложением. В терминале:
+    python manage.py runserver
+10. В браузере переходим на адрес: http://127.0.0.1:8000/
+    Должно быть приветствие django
+11. ctrl + c    в терминале останавливает работу сервера.  
+12. Регистрируем наше приложение в файле settings.py в списке installed_apps
+    Просто тут добавляем наше приложение в конце списка:
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'lesson_01_app'
+]
+
+--------------------------
+
+13. В папке приложения создаём такие папки и файлы:
+    templates
+        lesson_01_app
+            templates
+                index.html
+    static 
+        lesson_01_app
+            static    
+                css
+                    style.css
+                img
+                js
+                    index.js            
+
+14. В файле views описываются функции и что они должны возвращать клиенту.
+15. В файле urls прописываются пути и какие функции вызывать при заходе на эти пути.
+
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}       
+<!-- Подключаем область со статичными файлами -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="{% static 'lesson_01_app/static/css/style.css'%}">     
+    <!-- берём css файл из статичной области по указанному пути -->
+</head>
+<body>
+    <h1>Главная!</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, animi sapiente in quisquam tenetur assumenda illo repudiandae cumque eum vitae harum, reprehenderit iusto cum ea officiis libero molestiae veniam at.
+    </p>    
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <img src="{% static 'lesson_01_app/static/img/cat.jpg' %}" alt="cat" height="200">
+    <!-- подключаем картинку из статичной области -->
+
+    <script src="{% static 'lesson_01_app/static/js/index.js' %}"></script>
+    <!-- подключаем js файл из статичной области -->
+
+</body>
+</html>

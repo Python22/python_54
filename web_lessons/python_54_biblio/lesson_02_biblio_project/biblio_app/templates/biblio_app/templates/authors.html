@@ -1,0 +1,11 @@
+<!-- берём всё из base.html -->
+{% extends 'biblio_app/templates/base.html' %}
+
+<!-- подключаем статичную область -->
+{% load static %}
+
+
+<!-- ищем в base.html блок main_block для вставки туда нового содержимого -->
+{% block 'main_block' %}
+    <h2>Писатели</h2>
+{% endblock %}
