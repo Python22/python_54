@@ -8,4 +8,35 @@
 <!-- ищем в base.html блок main_block для вставки туда нового содержимого -->
 {% block 'main_block' %}
     <h2>Книги</h2>
+    {{ test }}
+    <!-- {{ books }} -->
+    <table id="result_table">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Название</td>
+                <td>Год издания</td>
+                <td>Издательство</td>
+                <td>Авторы</td>
+                <td>Жанры</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 
+                Перебираем в цикле все книги по-очереди из полученного контекста. 
+                Для каждой книги создаём строку и помещаем в ячейки данные про данную книгу 
+            -->
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.year }}</td>
+                    <td>{{ book.publisher.name }}</td>
+                    <td>{{ book.authors.all }}</td>
+                    <td>{{ book.genres.all }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
