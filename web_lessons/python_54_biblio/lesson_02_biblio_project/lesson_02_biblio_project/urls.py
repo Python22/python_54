@@ -26,5 +26,6 @@ urlpatterns = [
     path('authors/', biblio_app.views.all_authors, name='authors'),
     path('publishers/', biblio_app.views.all_publishers, name='publishers'),
     path('genres/', biblio_app.views.all_genres, name='genres'),
+    path('test_django_orm/', biblio_app.views.test_django_orm, name='test_django_orm'),
     path('', biblio_app.views.index, name='index'),
 ]
