@@ -19,9 +19,11 @@ def all_books(request):
 
 
 def all_authors(request):
+    authors = Authors.objects.all()             # нашли всех писателей
     return render(
         template_name="biblio_app/templates/authors.html",
-        request=request
+        request=request,
+        context={"authors": authors}
     )
 
 
@@ -37,6 +39,18 @@ def all_genres(request):
         template_name="biblio_app/templates/genres.html",
         request=request
     )
+
+
+def get_books_by_author_id(request, author_id):
+    print(type(author_id))
+    author = Authors.objects.get(id=author_id)      # находим конкретного писателя по его id
+    print(author)
+    books = author.books.prefetch_related()         # получаем колелкцию всех книг данного автора
+    print("Все книги данного автора:")
+    print(books)
+
+
+
 
 
 def test_django_orm(request):   # тут помторим на ORM команды к БД

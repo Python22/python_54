@@ -8,4 +8,28 @@
 <!-- ищем в base.html блок main_block для вставки туда нового содержимого -->
 {% block 'main_block' %}
     <h2>Писатели</h2>
+    <table id="result_table">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Автор</td>
+                <td>День рождения</td>
+                <td>Показать все книги</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td>{{ author.lastname }} {{ author.firstname }} {% if author.patronymic %} {{ author.patronymic }} {% endif %}</td>
+                    <td>{{ author.birthday }}</td>
+                    <td><button class="show_author_books_btn" author_id="{{ author.id }}">Показать</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block 'js_block' %}
+<script src="{% static 'biblio_app/static/js/authors.js' %}"></script>
 {% endblock %}

@@ -32,8 +32,19 @@
                     <td>{{ book.title }}</td>
                     <td>{{ book.year }}</td>
                     <td>{{ book.publisher.name }}</td>
-                    <td>{{ book.authors.all }}</td>
-                    <td>{{ book.genres.all }}</td>
+                    <!-- <td>{{ book.authors.all }}</td> -->
+                    <td>
+                        <!-- Перебираем всех авторов данной книги -->
+                        {% for author in book.authors.all %}
+                            {{ author.lastname }} {{ author.firstname }} {% if author.patronymic %} {{ author.patronymic }} {% endif %}<br>
+                        {% endfor %}
+                    </td>
+                    <!-- <td>{{ book.genres.all }}</td> -->
+                    <td>
+                        {% for genre in book.genres.all %}
+                            {{ genre.name }}<br>
+                        {% endfor %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

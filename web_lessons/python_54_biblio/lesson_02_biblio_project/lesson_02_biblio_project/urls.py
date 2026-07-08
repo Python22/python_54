@@ -27,5 +27,6 @@ urlpatterns = [
     path('publishers/', biblio_app.views.all_publishers, name='publishers'),
     path('genres/', biblio_app.views.all_genres, name='genres'),
     path('test_django_orm/', biblio_app.views.test_django_orm, name='test_django_orm'),
+    path('get_books_by_author_id/<int:author_id>', biblio_app.views.get_books_by_author_id, name='get_books_by_author_id'),   # если кто-то защёл по адресу http://127.0.0.1:8000/get_books_by_author_id/4
     path('', biblio_app.views.index, name='index'),
 ]
