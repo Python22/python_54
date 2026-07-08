@@ -7,5 +7,50 @@
 
 <!-- ищем в base.html блок main_block для вставки туда нового содержимого -->
 {% block 'main_block' %}
-    <h2>Жанры</h2>
+    <h2>{{ info }}</h2>
+    <div id="all_genres_btns">
+        <!-- перебираем все полученный жанры -->
+        {% for genre in all_genres %}
+            <a href="/get_books_by_genre_name/{{ genre.name }}">{{ genre.name }}</a>         
+        {% endfor %}
+    </div>
+    <table id="result_table">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Название</td>
+                <td>Год издания</td>
+                <td>Издательство</td>
+                <td>Авторы</td>
+                <td>Жанры</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 
+                Перебираем в цикле все книги по-очереди из полученного контекста. 
+                Для каждой книги создаём строку и помещаем в ячейки данные про данную книгу 
+            -->
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.year }}</td>
+                    <td>{{ book.publisher.name }}</td>
+                    <!-- <td>{{ book.authors.all }}</td> -->
+                    <td>
+                        <!-- Перебираем всех авторов данной книги -->
+                        {% for author in book.authors.all %}
+                            {{ author.lastname }} {{ author.firstname }} {% if author.patronymic %} {{ author.patronymic }} {% endif %}<br>
+                        {% endfor %}
+                    </td>
+                    <!-- <td>{{ book.genres.all }}</td> -->
+                    <td>
+                        {% for genre in book.genres.all %}
+                            {{ genre.name }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
 {% endblock %}

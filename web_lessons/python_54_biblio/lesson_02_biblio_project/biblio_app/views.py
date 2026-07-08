@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from biblio_app.models import Authors, Books, Genres, Publishers   # подключили классы-таблицы-модели
+from biblio_app.models import Authors, Books, Genres, Publishers    # подключили классы-таблицы-модели
+from django.http import JsonResponse                                # подключаем класс, который умеет отправлять JSON ответы
 
 
 def index(request):
@@ -35,22 +36,35 @@ def all_publishers(request):
 
 
 def all_genres(request):
+    all_genres = Genres.objects.all()           # получаем все жанры
     return render(
         template_name="biblio_app/templates/genres.html",
-        request=request
+        request=request,
+        context={"all_genres": all_genres, "info": "Выберите жанр:"}
+    )
+
+
+def get_books_by_genre_name(request, genre_name):
+    all_genres = Genres.objects.all()               # получаем все жанры
+    genre = Genres.objects.get(name=genre_name)     # ищем жанр по имени в БД
+    books = genre.books.prefetch_related()          # делаем запрос на поиск всех книг у данного жанра
+    return render(
+        template_name="biblio_app/templates/genres.html",
+        request=request,
+        context={"all_genres": all_genres, "books": books, "info": genre.name}  # отправляем шаблонизатору коллекцию всех жанров и коллекцию всех книг данного жанра
     )
 
 
 def get_books_by_author_id(request, author_id):
-    print(type(author_id))
     author = Authors.objects.get(id=author_id)      # находим конкретного писателя по его id
-    print(author)
+    print(author)                                   # Сергеевич Александр Пушкин; 2026-07-15; id=1
     books = author.books.prefetch_related()         # получаем колелкцию всех книг данного автора
     print("Все книги данного автора:")
-    print(books)
-
-
-
+    print(books)                                    # <QuerySet [<Books: Евгений Онегин; год издания-1830; id=1>, <Books: Сказка о царе Салтане; год издания-1825; id=2>, <Books: Сборник тест; год издания-2026; id=7>]> 
+    books = list(books.values("title", "year"))     # преобразуем коллекцию объектов Books в список словарей, и затем превращаем QuerySet в обычный питоновский list
+    print(books)                                    # [{'title': 'Евгений Онегин', 'year': 1830}, {'title': 'Сказка о царе Салтане', 'year': 1825}, {'title': 'Сборник тест', 'year': 2026}]
+    
+    return JsonResponse(books, safe=False)          # отправляем json ответ, в теле json будет массив объектов(сериализуем данные)
 
 
 def test_django_orm(request):   # тут помторим на ORM команды к БД
