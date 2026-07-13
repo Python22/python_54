@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- подключили статичную область нашего сервера -->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'auth_app/static/css/auth.css' %}">
+    <!-- из статичной области подключили css файл -->
+</head>
+<body>
+    <!-- создаём форму регистрации с тремя полями -->
+    <form action="" method="post" id="auth_form">
+        {% csrf_token %}
+        <label for="login">Логин:</label>
+        <br>
+        <input type="text" id="login" name="login" required maxlength="255" placeholder="до 255 символов">
+        <br>
+
+        <label for="password">Пароль:</label>
+        <br>
+        <input type="password" id="password" name="password" required maxlength="20" minlength="8" placeholder="от 8 до 20 символов">
+        <br>
+
+        <label for="password2">Повторите пароль:</label>
+        <br>
+        <input type="password" id="password2" name="password2" required maxlength="20" minlength="8" placeholder="пароли должны совпадать">
+        <br>
+
+        <input type="submit" id="submit_btn" value="Регистрация">
+
+        <ul id="error_messages">
+            <!-- ша -->
+            {% for current_error in errors %}
+                <li>{{ current_error }}</li>
+            {% endfor %}
+        </ul>
+    </form>
+    <script src="{% static 'auth_app/static/js/auth.js' %}"></script>
+    <!-- из статичной области подключили js файл -->
+</body>
+</html>

@@ -1,0 +1,178 @@
+VS code
+1. Создали папку и выбрали её в vs code
+2. Открываем терминал ctrl + `      (view -> terminal)  (` - ё)
+3. В терминале вводим:
+    python -m venv .venv
+    Так мы создадим виртуальное окружение python в папке .venv
+4. Далее надо переключиться на него(активировать его). В терминале пишем:
+    .venv\Scripts\activate.ps1
+    После выполнения в начале пути в терминале должен появиться (.venv) 
+    (.venv) PS C:\python54_django_01> 
+5. Далее ставим django. В терминале: 
+    pip install django     
+
+
+6. После установки создаём проект django. В терминале:
+    django-admin startproject posts_project
+    Должна появиться папка posts_project. В ней тоже папка и manage.py
+7. Нужно войти в папку с проектом. В терминале:
+    cd posts_project
+    Теперь путь будет примерно такой: (.venv) PS C:\python54_django_01\posts_project> 
+
+8. Теперь в проекте создадим приложения. В терминале:
+    python manage.py startapp auth_app
+    python manage.py startapp posts_app
+    Должна появиться соотвнетсвующая папка с приложением внутри проекта.
+
+
+
+
+
+
+9. Далее запустим сервер с нашим приложением. В терминале:
+    python manage.py runserver
+10. В браузере переходим на адрес: http://127.0.0.1:8000/
+    Должно быть приветствие django
+11. ctrl + c    в терминале останавливает работу сервера.  
+12. Регистрируем наше приложение в файле settings.py в списке installed_apps
+    Просто тут добавляем наше приложение в конце списка:
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'auth_app',
+    'posts_app',
+]
+
+--------------------------
+
+13. В папке auth_app создаём такие папки и файлы:
+    urls.py
+    templates
+        auth_app
+            templates
+                register.html
+                login.html
+    static 
+        auth_app
+            static    
+                css
+                    auth.css
+                img   
+                js
+                    auth.js 
+          
+
+13. В папке posts_app создаём такие папки и файлы:
+    urls.py
+    templates
+        posts_app
+            templates
+                base.html
+                all_posts.html
+                post_and_commentaries.html
+    static 
+        posts_app
+            static    
+                css
+                    posts.css
+                img    
+                js
+                    posts.js
+                    
+
+14. В файле views описываются функции и что они должны возвращать клиенту.
+    В файле auth_app/views.py добавляем функции:
+    
+    def register_view(request):
+        pass
+    def login_view(request):
+        pass
+    def logout_view(request):
+        pass
+
+
+    В файле posts_app/views.py добавляем функции:   
+
+    def all_posts_view(request):
+        pass
+    def add_new_post(request):
+        pass
+    def post_and_commentaries_view(request, post_id):
+        pass
+
+
+
+15. В файле urls прописываются пути и какие функции вызывать при заходе на эти пути.
+    В файле auth_app/urls.py добавляем код с путями:   
+
+    from django.urls import path
+    import auth_app
+    import auth_app.views
+
+    app_name = "auth_app"           # название нашего приложения, внутри которого находится данный urls.py
+
+    # регистрируем наши пути и какие функции должны быть вызваны при заходе на данные пути
+    urlpatterns = [
+        path('register/', auth_app.views.register_view, name="register"),
+        path('login/', auth_app.views.login_view, name="login"),
+        path('logout/', auth_app.views.logout_view, name="logout"),
+    ]
+
+
+
+    В файле posts_app/urls.py добавляем код с путями:   
+
+    from django.urls import path
+    import posts_app
+    import posts_app.views
+
+
+    app_name = "posts_app"           # название нашего приложения, внутри которого находится данный urls.py
+
+    # регистрируем наши пути и какие функции должны быть вызваны при заходе на данные пути
+    urlpatterns = [
+        path('', posts_app.views.all_posts_view, name="all_posts"),
+        path('add_new_post/', posts_app.views.add_new_post, name="add_new_post"),
+        path('post/<int:post_id>', posts_app.views.post_and_commentaries_view, name="post_and_commentaries"),
+    ]
+
+
+
+    В файле posts_project/urls.py добавляем код с импортом путей:   
+
+    from django.contrib import admin
+    from django.urls import path, include
+
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('auth/', include('auth_app.urls')),
+        path('', include('posts_app.urls'))
+    ]
+
+
+18. Подготавливаем создание таблицы пользователей в БД. Пишем в терминале:
+    python manage.py makemigrations
+
+19. Если никаких ошибок нет, то выполним миграцию в терминале:
+    python manage.py migrate
+
+20. Потом создаём суперпользователя(админа) в терминале:
+    python manage.py createsuperuser    
+
+    вводим данные и запоминаем
+
+21. 127.0.0.1:8000/admins   по этому пути лежит встроенная админка, заходим под данными суперпользователя        
+
+
+22. Заполняем register.html(смотрите файл) и привязываем возврат данного шаблона в функции register_view в файле auth_app.views:
+    
+    def register_view(request):
+        return render(
+            template_name="auth_app/templates/register.html",
+            request=request
+        )
