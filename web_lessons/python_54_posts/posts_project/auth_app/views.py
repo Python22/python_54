@@ -30,7 +30,7 @@ def register_view(request):
         if len(errors) == 0:                                        # если в списке ошибок нет ни одного элемента(нет ошибок)
             User.objects.create_user(username=user_login, password=user_password)   # создаём в базе данных нового пользователя с такими данными
             print("Успешно создали пользователя с именем", user_login)              # сообщение в консоль
-            return redirect("auth_app:login_view")                                  # перенаправляем на функцию login_view в приложении auth_app
+            return redirect("/auth/login")                                  # перенаправляем на функцию login_view в приложении auth_app
 
     return render(
         template_name="auth_app/templates/register.html",
@@ -40,6 +40,28 @@ def register_view(request):
 
 
 def login_view(request):
+    print("Кто-то пытается войти в аккаунт")
+    if request.method == "POST":        # если данные пришли из формы
+        user_login = request.POST.get("login")              # что пришло из формы под именем login, если таких данных нет, то запишем None
+        user_password = request.POST.get("password")        # что пришло из формы под именем password
+
+        if user_login is None or user_password is None:     # если что-то не пришло
+            return redirect("/auth/login")                  # опять открываем страницу входа в аккаунт без сообщения об ошибке 
+
+        # if User.objects.filter(username=user_login).exists():   # проверяем в таблице пользователей, существует ли кто-то с таким же ником
+            # if User.ob
+        user = authenticate(username=user_login, password=user_password)    # вызываем процесс аутентификации(есть ли пользователь с таким ником и такой же ли пароль был сохранён(хеш от пароля))
+        if user is None:                        # если логин или пароль не подошли
+            return render(                      # открываем ту же страницу, но уже отправляем ещё и текст с ошибкой авторизации
+                template_name="auth_app/templates/login.html",
+                request=request,
+                context={"error": "Неправильный логин и/или пароль"}    
+            )    
+        else:                                   # если пользователь с такими логином и паролем есть
+            login(request, user)                # запомнимаем что этот пользователь прошёл процесс захода в аккаунт
+            return redirect("/")                # перекидываем на главную страницу сайта
+
+
     return render(
         template_name="auth_app/templates/login.html",
         request=request

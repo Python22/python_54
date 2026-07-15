@@ -1,3 +1,6 @@
 from django.contrib import admin
+from posts_app.models import Post, Commentary   # подключаем таблицы-модели
 
-# Register your models here.
+
+admin.site.register(Post)           # включаем отображение таблицы в админке
+admin.site.register(Commentary)     # включаем отображение таблицы в админке

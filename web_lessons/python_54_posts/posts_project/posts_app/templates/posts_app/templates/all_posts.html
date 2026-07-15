@@ -1,0 +1,23 @@
+<!-- Раширяем базовый шаблон -->
+{% extends "posts_app/templates/base.html" %}
+
+<!-- подключаем статичную область -->
+{% load static %}
+
+<!-- Что хотим поместить внутрь блока title в базовом шаблоне -->
+{% block 'title' %}Посты{% endblock %}
+
+<!-- В блок CSS добавляем другой css файл -->
+{% block 'css_block' %}
+<link rel="stylesheet" href="{% static 'posts_app/static/css/posts.css' %}">
+{% endblock %}
+
+<!-- Что вставить в main_block блок -->
+{% block 'main_block' %}
+<p>ВСЕ ПОСТЫ</p>
+{% endblock %}
+
+<!-- Что вставить в js_block блок -->
+{% block 'js_block' %}
+<script src="{% static 'posts_app/static/js/posts.js' %}"></script>
+{% endblock %}
