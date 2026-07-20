@@ -10,11 +10,31 @@
 <!-- В блок CSS добавляем другой css файл -->
 {% block 'css_block' %}
 <link rel="stylesheet" href="{% static 'posts_app/static/css/posts.css' %}">
+<link rel="stylesheet" href="{% static 'posts_app/static/css/add_new_post.css' %}">
 {% endblock %}
 
 <!-- Что вставить в main_block блок -->
 {% block 'main_block' %}
 <p>Добавить новый пост</p>
+<form action="" id="add_post_form" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <label for="post_title">Название поста:</label>
+    <br>
+    <input type="text" id="post_title" name="post_name" required maxlength="255">
+    <br>
+
+    <label for="post_content">Содержимое поста:</label>
+    <br>
+    <input type="text" id="post_content" name="post_content" required maxlength="10000">
+    <br>
+
+    <label for="post_image">Картинка поста(не обязательна):</label>
+    <br>
+    <input type="file" id="post_image" name="post_image">
+    <br>
+
+    <input type="submit" value="Готово" id="add_post_btn">
+</form>
 {% endblock %}
 
 <!-- Что вставить в js_block блок -->

@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: black;
+}
+#main_menu {
+    display: flex;
+    justify-content: center;
+}
+.main_menu_btn {
+    background-color: aqua;
+    font-size: 30px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+.main_menu_btn:hover {
+    text-shadow: 0 0 5px black;
+    transition: 0.3s;
+    background-color: rgb(13, 251, 251);
+    /* font-weight: bold; */
+    /* font-size: 32px;
+    padding: 8px; */
+}
+#main_logo {
+    height: 50px;
+}
+#auth_div a {
+    background-color: aqua;
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+#auth_div a:hover {
+    box-shadow: 0 0 10px aqua;
+    background-color: rgb(101, 255, 255);
+    transition: 0.3s;
+}
+#auth_div {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+}
+#username {
+    color: aqua;
+}

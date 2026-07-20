@@ -12,15 +12,22 @@
     <header>
         <nav id="main_menu">
             <!-- {% url 'posts_app:all_posts' %} означает что берём адрес из файла urls внтри приложения posts_app, адрес с именем(name) all_posts-->
-            <a href="{% url 'posts_app:all_posts' %}"><img src="" alt="main_logo" id="main_logo"></a>
+            <a href="{% url 'posts_app:all_posts' %}"><img src="/static/posts_app/static/img/main_logo.png" alt="main_logo" id="main_logo"></a>
             <a href="{% url 'posts_app:all_posts' %}" class="main_menu_btn">Главная</a>
             <a href="{% url 'posts_app:add_new_post' %}" class="main_menu_btn">Добавить пост</a>
             <a href="#" class="main_menu_btn">Меню 3</a>
             <a href="#" class="main_menu_btn">Меню 4</a>
         </nav>
         <div id="auth_div">
-            <a href="{% url 'auth_app:login' %}">Войти</a>
-            <a href="{% url 'auth_app:register' %}">Создать аккаунт</a>
+            <!-- Если пользователь авторизован, то покажем ник и кнопку выхода -->
+            <!-- Если НЕ авторизован, то будет кнопка входа и регистрации -->
+            {% if request.user.is_authenticated %}
+                <span id="username">{{ request.user.username }}</span>
+                <a href="{% url 'auth_app:logout' %}">Выйти</a>
+            {% else %}
+                <a href="{% url 'auth_app:login' %}">Войти</a>
+                <a href="{% url 'auth_app:register' %}">Создать аккаунт</a>
+            {% endif %}
         </div>
     </header>
     <main>

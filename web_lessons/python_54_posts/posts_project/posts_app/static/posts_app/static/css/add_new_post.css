@@ -1,0 +1,32 @@
+#add_post_form {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    background-color: gray;
+    padding: 15px;
+    color: aqua;
+}
+#post_title, #post_content, #post_image {
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: gray;
+    margin-bottom: 10px;
+    outline: none;
+}
+#add_post_btn {
+    width: 100%;
+    background-color: aqua;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+}
+#add_post_btn:hover {
+    background-color: rgb(139, 254, 254);
+    box-shadow: 0 0 10px aqua;
+    cursor: pointer;
+    transition: 0.3s;
+}

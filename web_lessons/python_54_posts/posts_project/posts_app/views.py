@@ -12,6 +12,10 @@ def all_posts_view(request):
 
 @login_required                 # ставим проверку на авторизованность, если нет, то перекинем на страницу входа в аккаунт
 def add_new_post(request):
+    if request.POST:            # если пришли данные из формы
+        print("Кто-то хочет добавить пост")
+        
+        
     return render(
         template_name="posts_app/templates/add_new_post.html",
         request=request
