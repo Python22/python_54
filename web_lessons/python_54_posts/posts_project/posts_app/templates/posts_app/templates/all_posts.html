@@ -15,6 +15,27 @@
 <!-- Что вставить в main_block блок -->
 {% block 'main_block' %}
 <p>ВСЕ ПОСТЫ</p>
+<div id="all_posts_container">
+    <!-- перебираем все посты из контекста  -->
+    {% for post in all_posts %}
+        <div class="post_container">
+            <div class="post_header">
+                <h2>{{ post.title }}</h2>
+                <span class="rating">{{ post.rating }}</span>
+            </div>
+            <p class="post_author">{{ post.author.username }}</p>
+            <p class="post_date">{{ post.create_date }}</p>
+            <p class="post_content">{{ post.content }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
+            {% endif %}
+            <div class="post_footer">
+                <button class="like_btn" post_id="{{ post.id }}">👍</button>
+                <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
 
 <!-- Что вставить в js_block блок -->

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User             # подключили �
 class Post(models.Model):
     title = models.CharField(max_length=255)                # заголовок поста, максимум 255 символов
     content = models.CharField(max_length=10000)            # содержимое поста, максимум 10000 символов
-    image = models.CharField(null=True, blank=True)         # ссылка на картинку в посте, поле можно оставить пустым
+    image = models.ImageField(upload_to="posts_images/" ,null=True, blank=True)         # ссылка на картинку в посте, поле можно оставить пустым
     create_date = models.DateTimeField(auto_now_add=True)   # дата и время публикации поста, при создании поста запишем текущее время на сервере
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")    # кто автор. Внешний ключ на таблицу пользователей. При удалении пользователя удаляем все его посты. related_name="posts" так можно будет потом у пользователя найти все его посты 
     rating = models.IntegerField(default=0)                 # рейтинг в виде числа. При создании поста по-умолчанию равняется нулю
