@@ -20,8 +20,7 @@
     {% for post in all_posts %}
         <div class="post_container">
             <div class="post_header">
-                <h2>{{ post.title }}</h2>
-                <span class="rating">{{ post.rating }}</span>
+                <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
             </div>
             <p class="post_author">{{ post.author.username }}</p>
             <p class="post_date">{{ post.create_date }}</p>
@@ -30,7 +29,9 @@
                 <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
             {% endif %}
             <div class="post_footer">
+                <a href="/post/{{ post.id }}">Комментарии</a>
                 <button class="like_btn" post_id="{{ post.id }}">👍</button>
+                <span class="rating">{{ post.rating }}</span>
                 <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
             </div>
         </div>

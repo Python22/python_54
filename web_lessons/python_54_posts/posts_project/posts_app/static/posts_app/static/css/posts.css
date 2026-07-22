@@ -3,3 +3,36 @@
     margin-left: auto;
     margin-right: auto;
 }
+.post_container {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px black;
+}
+.post_image {
+    width: 100%;
+    margin-top: 10px;
+}
+.post_date {
+    font-size: 12px;
+    font-style: italic;
+}
+.post_footer {
+    text-align: right;
+    font-size: 18px;
+    cursor: pointer;
+}
+.like_btn, .dislike_btn {
+    border: none;
+    background-color: white;
+    font-size: 18px;
+}
+.like_btn:hover, .dislike_btn:hover {
+    cursor: pointer;
+    text-shadow: 0 0 5px black;
+    transition: 0.3s;
+}
+.rating {
+    user-select: none;
+}
