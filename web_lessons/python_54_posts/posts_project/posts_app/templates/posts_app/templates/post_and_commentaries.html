@@ -5,7 +5,7 @@
 {% load static %}
 
 <!-- Что хотим поместить внутрь блока title в базовом шаблоне -->
-{% block 'title' %}Пост{% endblock %}
+{% block 'title' %}{{ post.title }}{% endblock %}
 
 <!-- В блок CSS добавляем другой css файл -->
 {% block 'css_block' %}
@@ -14,7 +14,42 @@
 
 <!-- Что вставить в main_block блок -->
 {% block 'main_block' %}
-<p>Конкретный пост и комменты</p>
+<div id="all_posts_container">
+    <div class="post_container">
+        <div class="post_header">
+            <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+        </div>
+        <p class="post_author">{{ post.author.username }}</p>
+        <p class="post_date">{{ post.create_date }}</p>
+        <p class="post_content">{{ post.content }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
+        {% endif %}
+        <div class="post_footer">
+            <a href="">Добавить комментарий</a>
+            <button class="like_btn" post_id="{{ post.id }}">👍</button>
+            <span class="rating">{{ post.rating }}</span>
+            <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+        </div>
+    </div>
+</div>
+<div id="all_comments_container">
+    {% for comment in post_commentaries %}
+        <div class="comment_container">
+            <p class="post_username">{{ comment.author.username }}</p>
+            <p class="post_create_date">{{ comment.create_date }}</p>
+            <p class="post_content">{{ comment.content }}</p>
+        </div>
+    {% endfor %}
+</div>
+<form action="" id="add_new_comment_form" method="post">
+    {% csrf_token %}
+    <label for="">Ваш комментарий:</label>
+    <br>
+    <textarea type="text" name="comment_content" id="comment_content" required maxlength="1000" rows="10" cols="50"></textarea>
+    <br>
+    <input type="submit" value="Отправить">    
+</form>
 {% endblock %}
 
 <!-- Что вставить в js_block блок -->

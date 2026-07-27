@@ -79,7 +79,21 @@ def add_new_post(request):
 
 
 def post_and_commentaries_view(request, post_id):
-    return render(
-        template_name="posts_app/templates/post_and_commentaries.html",
-        request=request
-    )
+    try:                                                            # поиск поста будем делать с перехватом исключения
+        post_id = int(post_id)                                      # преобразуем строковый id поста в число
+        post = Post.objects.get(id=post_id)                         # находим пост по id
+        post_commentaries = post.commentaries.prefetch_related()    # находим все связанные комменты у данного поста
+        print(post)
+        print(post_commentaries)
+        return render(
+            template_name="posts_app/templates/post_and_commentaries.html",
+            request=request,
+            context={"post": post, "post_commentaries": post_commentaries}      # отправляем шаблонизатору пост и его комменты
+        )
+    except Exception as e:
+        print("Кто-то попытался поулчить несуществующий пост")
+        return redirect("/error_404_post_not_found")            # перекидываем на главную страницу
+
+
+def error_404_post_not_found(request):
+    return HttpResponse("Такого поста нет(")
