@@ -82,6 +82,18 @@ def post_and_commentaries_view(request, post_id):
     try:                                                            # поиск поста будем делать с перехватом исключения
         post_id = int(post_id)                                      # преобразуем строковый id поста в число
         post = Post.objects.get(id=post_id)                         # находим пост по id
+
+        if request.POST:                                            # если пришли данные из формы
+            comment_content = request.POST.get("comment_content")   # берём то, что пришло с именем comment_content
+            if len(comment_content) > 1000 or comment_content is None:  # если он слишком длинный и пустой
+                return HttpResponse("Комментарий должен быть от 1 до 1000 символов.")   # кинем ошибку
+            Commentary.objects.create(                              # создаём коммент в БД
+                content=comment_content,
+                author=request.user,
+                post=post
+            )
+            print("Коммент успешно добавлен")
+        
         post_commentaries = post.commentaries.prefetch_related()    # находим все связанные комменты у данного поста
         print(post)
         print(post_commentaries)
@@ -97,3 +109,50 @@ def post_and_commentaries_view(request, post_id):
 
 def error_404_post_not_found(request):
     return HttpResponse("Такого поста нет(")
+
+
+def all_posts_by_user(request, username):
+    """
+    функция получения списка постов определённого автора
+    """
+    all_posts = Post.objects.filter(author__username=username).order_by("-create_date")[:2]    # получаем все посты данного автора и сортируем от новых к старым, берём первые 2 поста
+    print(all_posts)
+    return render(
+        request=request,
+        template_name="posts_app/templates/user_page.html",
+        context={"all_posts": all_posts, "username": username}
+    )
+
+
+def get_next_posts_by_user(request):
+    """
+    функция подгрузки следующих постов
+    """
+    current_page = int(request.GET.get("current_page"))     # узнаём из get данных по ключу номер текущей страницы
+    username = request.GET.get("username")                  # узнаём из get данных по ключу username автора
+    print("требуется подгрузка постов у клиента", username, current_page)
+    print(username, type(username))
+    post_per_page = 2       # сколько постов на странице
+    offset = current_page * post_per_page               # с какого поста нужны новые данные
+    limit = offset + post_per_page                      # до какого поста нужны данные
+    next_posts = Post.objects.filter(author__username=username).order_by("-create_date")[offset:limit]    # получаем все посты и сортируем от новых к старым, берём первые 2 поста
+    print(next_posts)                   # <QuerySet [<Post: 9; cvbcvb; created: 2026-07-22 17:43:39.187463+00:00; author: admin>, <Post: 8; bcvb cvb cvb cvb cvb ; created: 2026-07-22 17:43:31.999120+00:00; author: admin>]>
+
+    data = []                           # список данных, которые нужно отправить
+    for post in next_posts:             # перебираем все данные из БД(посты)
+        try:                            # пытаемся узнать ссылку на картинку у данного поста
+            image_url = post.image.url  # поулчаем ссылку. Если ссылки нет, то будет исключение ValueError
+        except ValueError:              # если случилось исключение ValueError
+            image_url = None            # сохраним в переменную значение None
+        data.append({                   # в список данных вставляем словарь для данного поста
+            "title": post.title,
+            "content": post.content,
+            "image": image_url,
+            "create_date": post.create_date,
+            "rating": post.rating,
+            "author": post.author.username,
+            "id": post.id
+        })
+    print(data)     # [{'title': 'cvbcvb', 'content': 'vbnvbnvnvnvb', 'image': '/media/posts_images/%D1%84.png', 'create_date': datetime.datetime(2026, 7, 22, 17, 43, 39, 187463, tzinfo=datetime.timezone.utc), 'rating': 0, 'author': 'admin'}, {'title': 'bcvb cvb cvb cvb cvb ', 'content': 'cvb cvb cvb cv ', 'image': '/media/posts_images/%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5.png', 'create_date': datetime.datetime(2026, 7, 22, 17, 43, 31, 999120, tzinfo=datetime.timezone.utc), 'rating': 0, 'author': 'admin'}]
+
+    return JsonResponse({"status": "ok", "new_posts": data})     # отправляем JSON данные с нашими постами

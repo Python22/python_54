@@ -12,4 +12,6 @@ urlpatterns = [
     path('post/<str:post_id>', posts_app.views.post_and_commentaries_view, name="post_and_commentaries"),
     path('get_next_posts/', posts_app.views.get_next_posts, name="get_next_posts"),
     path('error_404_post_not_found/', posts_app.views.error_404_post_not_found, name="error_404_post_not_found"),
+    path('user/<str:username>', posts_app.views.all_posts_by_user, name="all_posts_by_user"),
+    path('get_next_posts_by_user/', posts_app.views.get_next_posts_by_user, name="get_next_posts_by_user"),
 ]

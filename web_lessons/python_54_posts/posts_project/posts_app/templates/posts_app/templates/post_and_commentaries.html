@@ -14,45 +14,54 @@
 
 <!-- Что вставить в main_block блок -->
 {% block 'main_block' %}
-<div id="all_posts_container">
-    <div class="post_container">
-        <div class="post_header">
-            <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
-        </div>
-        <p class="post_author">{{ post.author.username }}</p>
-        <p class="post_date">{{ post.create_date }}</p>
-        <p class="post_content">{{ post.content }}</p>
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
-        {% endif %}
-        <div class="post_footer">
-            <a href="">Добавить комментарий</a>
-            <button class="like_btn" post_id="{{ post.id }}">👍</button>
-            <span class="rating">{{ post.rating }}</span>
-            <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+    <div id="all_posts_container">
+        <div class="post_container">
+            <div class="post_header">
+                <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+            </div>
+            <p class="post_author">{{ post.author.username }}</p>
+            <p class="post_date">{{ post.create_date }}</p>
+            <p class="post_content">{{ post.content }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
+            {% endif %}
+            <div class="post_footer">
+                <a href="#add_new_comment_form">Добавить комментарий</a>
+                <button class="like_btn" post_id="{{ post.id }}">👍</button>
+                <span class="rating">{{ post.rating }}</span>
+                <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+            </div>
         </div>
     </div>
-</div>
-<div id="all_comments_container">
-    {% for comment in post_commentaries %}
-        <div class="comment_container">
-            <p class="post_username">{{ comment.author.username }}</p>
-            <p class="post_create_date">{{ comment.create_date }}</p>
-            <p class="post_content">{{ comment.content }}</p>
+    <div id="all_comments_container">
+        {% for comment in post_commentaries %}
+            <div class="comment_container">
+                <p class="post_username">{{ comment.author.username }}</p>
+                <p class="post_create_date">{{ comment.create_date }}</p>
+                <p class="post_content">{{ comment.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% if request.user.is_authenticated %}
+        <form action="" id="add_new_comment_form" method="post">
+            {% csrf_token %}
+            <label for="">Ваш комментарий:</label>
+            <br>
+            <textarea placeholder="комментарий должен быть от 1 до 1000 символов" type="text" name="comment_content" id="comment_content" required maxlength="1000" rows="10" cols="50"></textarea>
+            <br>
+            <input type="submit" value="Отправить">    
+        </form>
+    {% else %}
+        <div id="add_comment_info">
+            <p>Для добавления комментария нужно войти в аккаунт:</p>
+            <br>
+            <a href="{% url 'auth_app:login' %}">Войти</a>
+            <a href="{% url 'auth_app:register' %}">Создать аккаунт</a>
         </div>
-    {% endfor %}
-</div>
-<form action="" id="add_new_comment_form" method="post">
-    {% csrf_token %}
-    <label for="">Ваш комментарий:</label>
-    <br>
-    <textarea type="text" name="comment_content" id="comment_content" required maxlength="1000" rows="10" cols="50"></textarea>
-    <br>
-    <input type="submit" value="Отправить">    
-</form>
+    {% endif %}
 {% endblock %}
 
 <!-- Что вставить в js_block блок -->
 {% block 'js_block' %}
-<script src="{% static 'posts_app/static/js/posts.js' %}"></script>
+<!-- <script src="{% static 'posts_app/static/js/posts.js' %}"></script> -->
 {% endblock %}

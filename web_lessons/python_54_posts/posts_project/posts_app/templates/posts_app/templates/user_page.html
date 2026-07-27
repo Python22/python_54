@@ -1,0 +1,45 @@
+<!-- Раширяем базовый шаблон -->
+{% extends "posts_app/templates/base.html" %}
+
+<!-- подключаем статичную область -->
+{% load static %}
+
+<!-- Что хотим поместить внутрь блока title в базовом шаблоне -->
+{% block 'title' %}{{ username }}{% endblock %}
+
+<!-- В блок CSS добавляем другой css файл -->
+{% block 'css_block' %}
+<link rel="stylesheet" href="{% static 'posts_app/static/css/posts.css' %}">
+{% endblock %}
+
+<!-- Что вставить в main_block блок -->
+{% block 'main_block' %}
+<p>ВСЕ ПОСТЫ</p>
+<div id="all_posts_container">
+    <!-- перебираем все посты из контекста  -->
+    {% for post in all_posts %}
+        <div class="post_container">
+            <div class="post_header">
+                <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+            </div>
+            <p class="post_author">{{ post.author.username }}</p>
+            <p class="post_date">{{ post.create_date }}</p>
+            <p class="post_content">{{ post.content }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="картинка поста" class="post_image">
+            {% endif %}
+            <div class="post_footer">
+                <a href="/post/{{ post.id }}">Комментарии</a>
+                <button class="like_btn" post_id="{{ post.id }}">👍</button>
+                <span class="rating">{{ post.rating }}</span>
+                <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<!-- Что вставить в js_block блок -->
+{% block 'js_block' %}
+<script src="{% static 'posts_app/static/js/user_page.js' %}"></script>
+{% endblock %}
