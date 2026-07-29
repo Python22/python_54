@@ -50,3 +50,6 @@ class Vote(models.Model):
     class Meta:                                                     # доп настройки таблицы
         verbose_name = "Оценка поста"                               # как писать название таблицы в админке в единственном числе
         verbose_name_plural = "Оценки постов"                       # мн. число
+
+    def __str__(self) -> str:                               # как отображать коммент в виде строки(например в админке или в консоли)
+        return f"{self.id};  author: {self.user.username}; post: {self.post.title}; value: {self.vote_value}"

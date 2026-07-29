@@ -170,16 +170,35 @@ def post_vote(request):
     try:
         current_post = Post.objects.get(id=int(post_id))    # делаем запрос к базе данных в таблицу постов и получаем данный пост 
         
+        # if user_vote_value == "1":                          # если нам пришла оценка "1"    
+        #     current_post.rating += 1                        # то у текущего поста, который нашли увеличиваем рейтинг на 1
+        # else:                                               # если пришло "-1"
+        #     current_post.rating -= 1                        # уменьшаем рейтинг у текущего поста
+        # current_post.save()                                 # сохраняем изменения в БД у данного поста
         
-        
-        
-        
-        if user_vote_value == "1":                          # если нам пришла оценка "1"    
-            current_post.rating += 1                        # то у текущего поста, который нашли увеличиваем рейтинг на 1
-        else:                                               # если пришло "-1"
-            current_post.rating -= 1                        # уменьшаем рейтинг у текущего поста
-        current_post.save()                                 # сохраняем изменения в БД у данного поста
+
+        try:
+            vote = Vote.objects.get(user=request.user, post=current_post)   # находим в таблице инфу о оценке поста таким пользоватлем
+            if vote.vote_value == int(user_vote_value):                     # если запись об оценке нашлась, то сравниваем оценку и то, что нам прислал пользователь
+                # ТУТ НАДО БУДЕТ УБРАТЬ ЗАПИСМЬ О ЛАЙКЕ/ДИЗЛАЙКЕ
+                vote.delete()
+                current_post.rating += int(user_vote_value) * -1
+                # return JsonResponse({"status": "ok", "error_message": "Оценка "})     # отправляем JSON данные с инфой об ошибке
+            else:                       # если оценки отличаются(был лайк(1) пришёл дизлайк(-1))
+                vote.vote_value = int(user_vote_value)          # меняем 1(лайк) на -1(дизлайк) ИЛИ наоборот
+                current_post.rating += int(user_vote_value)
+                vote.save()    
+
+        except Exception as e:                                  # если при поиске оценки произошла ошибка, то значит её не было и мы должны её создать
+            Vote.objects.create(                                # создаём запись в таблице оценок    
+                user=request.user,                              # кто оценил
+                post=current_post,                              # пост, котоырй оценили
+                vote_value = int(user_vote_value)               # какая оценка
+            )
+            current_post.rating += int(user_vote_value)
+        print(f"Запомнили оценку у пользователя {request.user}/ оценка: {user_vote_value}")
         print(f"У поста {current_post.id} изменилась оценка")
+        
         return JsonResponse({
             "status": "ok", 
             "error_message": None, 
