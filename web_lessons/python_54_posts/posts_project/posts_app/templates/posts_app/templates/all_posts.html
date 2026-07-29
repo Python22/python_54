@@ -22,7 +22,7 @@
             <div class="post_header">
                 <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
             </div>
-            <p class="post_author">{{ post.author.username }}</p>
+            <a class="post_author" href="/user/{{ post.author.username }}">{{ post.author.username }}</a>
             <p class="post_date">{{ post.create_date }}</p>
             <p class="post_content">{{ post.content }}</p>
             {% if post.image %}
@@ -42,4 +42,5 @@
 <!-- Что вставить в js_block блок -->
 {% block 'js_block' %}
 <script src="{% static 'posts_app/static/js/posts.js' %}"></script>
+<script src="{% static 'posts_app/static/js/post_voting.js' %}"></script>
 {% endblock %}

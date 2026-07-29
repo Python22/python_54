@@ -30,7 +30,7 @@ document.addEventListener("scrollend", (e) => {     // отслеживаем с
                         <div class="post_header">
                             <h2><a href="/post/${post.id}">${post.title}</a></h2>
                         </div>
-                        <p class="post_author">${post.author}</p>
+                        <a class="post_author" href="/user/${post.author}">${post.author}</a>
                         <p class="post_date">${post.create_date}</p>
                         <p class="post_content">${post.content}</p>
                 `

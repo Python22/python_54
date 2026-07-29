@@ -30,3 +30,23 @@ class Commentary(models.Model):
     class Meta:                                             # доп настройки таблицы
         verbose_name = "Коментарий"                         # как писать название таблицы в админке в единственном числе
         verbose_name_plural = "Коментарии"                  # мн. число
+
+
+class Vote(models.Model):
+    """
+    таблица оценок постов
+    """
+    
+    # какие оценнки разрешаем и как их будем показывать в админке
+    vote_choices = (
+        (1, "like"),
+        (-1, "dislike"),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)        # ссылка на пользователя
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)        # ссылка на пост
+    vote_value = models.SmallIntegerField(choices=vote_choices)     # числовое значение оценки(либо 1, либо -1)
+
+    class Meta:                                                     # доп настройки таблицы
+        verbose_name = "Оценка поста"                               # как писать название таблицы в админке в единственном числе
+        verbose_name_plural = "Оценки постов"                       # мн. число

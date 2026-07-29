@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required       # подключаем декоратор-функцию, которая будет проверять авторизован пользователь или нет
-from posts_app.models import Post, Commentary                   # подключаем наши модели
+from posts_app.models import Post, Commentary, Vote                   # подключаем наши модели
 from django.http import JsonResponse                            # класс для отправки JSON данных
 
 
@@ -156,3 +156,36 @@ def get_next_posts_by_user(request):
     print(data)     # [{'title': 'cvbcvb', 'content': 'vbnvbnvnvnvb', 'image': '/media/posts_images/%D1%84.png', 'create_date': datetime.datetime(2026, 7, 22, 17, 43, 39, 187463, tzinfo=datetime.timezone.utc), 'rating': 0, 'author': 'admin'}, {'title': 'bcvb cvb cvb cvb cvb ', 'content': 'cvb cvb cvb cv ', 'image': '/media/posts_images/%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5.png', 'create_date': datetime.datetime(2026, 7, 22, 17, 43, 31, 999120, tzinfo=datetime.timezone.utc), 'rating': 0, 'author': 'admin'}]
 
     return JsonResponse({"status": "ok", "new_posts": data})     # отправляем JSON данные с нашими постами
+
+
+@login_required
+def post_vote(request):
+    """функция голосования за пост"""
+    post_id = request.GET.get("post_id")                    # получаем из GET запроса из адресной строки что пришло с таким именем
+    user_vote_value = request.GET.get("user_vote_value")    # получаем из GET запроса из адресной строки что пришло с таким именем
+
+    if post_id is None or user_vote_value is None or user_vote_value not in ("1", "-1"):        # проверяем на корректность полученные данные
+        return JsonResponse({"status": "ok", "error_message": "некорректные данные"})     # отправляем JSON данные с инфой об ошибке
+
+    try:
+        current_post = Post.objects.get(id=int(post_id))    # делаем запрос к базе данных в таблицу постов и получаем данный пост 
+        
+        
+        
+        
+        
+        if user_vote_value == "1":                          # если нам пришла оценка "1"    
+            current_post.rating += 1                        # то у текущего поста, который нашли увеличиваем рейтинг на 1
+        else:                                               # если пришло "-1"
+            current_post.rating -= 1                        # уменьшаем рейтинг у текущего поста
+        current_post.save()                                 # сохраняем изменения в БД у данного поста
+        print(f"У поста {current_post.id} изменилась оценка")
+        return JsonResponse({
+            "status": "ok", 
+            "error_message": None, 
+            "new_post_rating": current_post.rating
+        })     # отправляем JSON данные об успешной оценке
+    except Exception as e:                                  # если произошла ошибка при выполнении оценки
+        return JsonResponse({"status": "ok", "error_message": "оценка поста не завершена..."})     # отправляем JSON данные с инфой об ошибке
+       
+
