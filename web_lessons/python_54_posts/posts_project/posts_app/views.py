@@ -102,6 +102,7 @@ def post_and_commentaries_view(request, post_id):
             vote = Vote.objects.get(user=request.user, post=post)           # пытаемся найти оценку у дпнного поста данным пользователем
         except Exception as e:                                              # если не нашли оценку, то будет исключение, тут перехватываем
             vote = None                                                     # как бы оценки нет
+        print(vote)
 
         return render(
             template_name="posts_app/templates/post_and_commentaries.html",
@@ -188,12 +189,24 @@ def post_vote(request):
             if vote.vote_value == int(user_vote_value):                     # если запись об оценке нашлась, то сравниваем оценку и то, что нам прислал пользователь
                 # ТУТ НАДО БУДЕТ УБРАТЬ ЗАПИСМЬ О ЛАЙКЕ/ДИЗЛАЙКЕ
                 vote.delete()
+                print("удалям оценку")
+                # if user_vote_value == "1":
+                #     current_post.rating -= 1
+                #     print("если пришёл ЛАЙК и был лайк в БД, уменьшаем рейтинг", current_post.rating)
+                # elif user_vote_value == "-1":
+                #     current_post.rating += 1    
+                #     print("если пришёл ДИЗЛАЙК и был лайк в БД, уменьшаем рейтинг", current_post.rating)
+                
                 current_post.rating += int(user_vote_value) * -1
+                current_post.save()
                 # return JsonResponse({"status": "ok", "error_message": "Оценка "})     # отправляем JSON данные с инфой об ошибке
             else:                       # если оценки отличаются(был лайк(1) пришёл дизлайк(-1))
+                print("оценка была, меянем ёё значение")
                 vote.vote_value = int(user_vote_value)          # меняем 1(лайк) на -1(дизлайк) ИЛИ наоборот
-                current_post.rating += int(user_vote_value)
-                vote.save()    
+                current_post.rating += int(user_vote_value) * 2 # изменяем рейтинг у поста
+                vote.save()                                     # сохраняем оценку в БД    
+                current_post.save()                             # сохраняем(обновляем) пост в БД
+                print("Поменяли оценку, сейчас: ", vote.vote_value)
 
         except Exception as e:                                  # если при поиске оценки произошла ошибка, то значит её не было и мы должны её создать
             Vote.objects.create(                                # создаём запись в таблице оценок    
@@ -201,8 +214,10 @@ def post_vote(request):
                 post=current_post,                              # пост, котоырй оценили
                 vote_value = int(user_vote_value)               # какая оценка
             )
-            current_post.rating += int(user_vote_value)
-        print(f"Запомнили оценку у пользователя {request.user}/ оценка: {user_vote_value}")
+            current_post.rating += int(user_vote_value)         # добавляем значение оценки к рейтингу
+            current_post.save()                                 # сохраняем поля у поста
+        print("Сейчас рейтинг у поста: ", current_post.rating)
+        # print(f"Запомнили оценку у пользователя {request.user}/ оценка: {user_vote_value}")
         print(f"У поста {current_post.id} изменилась оценка")
         
         return JsonResponse({

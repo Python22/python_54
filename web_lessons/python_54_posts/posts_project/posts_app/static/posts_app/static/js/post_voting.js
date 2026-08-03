@@ -32,12 +32,25 @@ for (let vote_button of all_vote_buttons) {                                 // �
                 throw `Не смогли оценить данный пост...Ошибка: ${data.error_message}`   // кидаем исключение в консоль с описанием ошибка от сервера
             }
             // если данные не содержат инфу об ощибке, то значит всё ок
+            console.log(e.target.style.textShadow)
             if (e.target.innerText === "👍") {                                  // если у кнопки внутри лежит 👍 
-                e.target.style.textShadow = "0 0 5px green"                     // добавим подсветку у кнопки зелёного цвета
+                if (e.target.style.textShadow != "green 0px 0px 5px") {
+                    e.target.style.textShadow = "green 0px 0px 5px"                     // добавим подсветку у кнопки зелёного цвета
+                    e.target.parentNode.children[3].style.textShadow = "none"
+                }
+                else {
+                    e.target.style.textShadow = "none"
+                }
                 console.log(e.target.parentNode.children[2])
             }
             else {                                                              // если на кнопке дизлайк    
-                e.target.style.textShadow = "0 0 5px red"                       // добавим подсветку у кнопки красного цвета
+                if (e.target.style.textShadow != "red 0px 0px 5px") {
+                    e.target.style.textShadow = "red 0px 0px 5px"                       // добавим подсветку у кнопки красного цвета
+                    e.target.parentNode.children[1].style.textShadow = "none"
+                }
+                else {
+                    e.target.style.textShadow = "none"
+                }
             }
             e.target.parentNode.children[2].innerText = data.new_post_rating    // обновляем рейтинг на странице(ищем спан по родителю)
         })

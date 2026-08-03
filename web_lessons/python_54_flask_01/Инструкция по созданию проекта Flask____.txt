@@ -1,0 +1,23 @@
+1) Создаём папку и открываем её.
+2) Создаём venv. Открвыаем терминал ctrl + `
+    python -m venv .venv
+    Появится папка .venv
+3) Активируем созданный venv/ В терминале: 
+    .venv/Scripts/activate.ps1
+    Должен появиться в адресе примерно такой путь:
+    (.venv) PS C:\Users\student\PycharmProjects\python_54\web_lessons\python_54_flask_01>
+4) Устанавливаем в окружение flask/ В терминале: 
+    pip install flask
+5) Создаём файл app.py
+6) Создаём папку templates
+7) В папке templates создаём файлы:
+    base.html
+    game.html
+    index.html
+8) Создаём папку static
+9) В папке static создаём папки css, img, js
+10) В папке css созадём файл base.css
+11) Пишем код в app.py
+
+12) Запускаем сервер. В терминале:
+    flask --app app.py run
