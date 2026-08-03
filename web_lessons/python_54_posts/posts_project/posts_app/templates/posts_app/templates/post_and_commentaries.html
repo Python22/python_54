@@ -27,9 +27,29 @@
             {% endif %}
             <div class="post_footer">
                 <a href="#add_new_comment_form">Добавить комментарий</a>
-                <button class="like_btn" post_id="{{ post.id }}">👍</button>
-                <span class="rating">{{ post.rating }}</span>
-                <button class="dislike_btn" post_id="{{ post.id }}">👎</button>
+                {% if vote %}
+                    
+                    {% if vote.value == 1 %}
+                        <button class="like_btn" post_id="{{ post.id }}" style="text-shadow: 0 0 5px green">👍</button>
+                    {% else %}
+                        <button class="like_btn" post_id="{{ post.id }}">👍</button>
+                    {% endif %}
+                    
+                    <span class="rating">{{ post.rating }}</span>
+                    
+                    {% if vote.value == -1 %}
+                        <button class="dislike_btn" post_id="{{ post.id }}" style="text-shadow: 0 0 5px red">👎</button>
+                    {% else %}
+                        <button class="dislike_btn" post_id="{{ post.id }}">👎</button>                    
+                    {% endif %}
+                
+                {% else %}
+                    <button class="like_btn" post_id="{{ post.id }}">👍</button>     
+                    <span class="rating">{{ post.rating }}</span> 
+                    <button class="dislike_btn" post_id="{{ post.id }}">👎</button>  
+
+                {% endif %}
+
             </div>
         </div>
     </div>

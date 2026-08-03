@@ -97,10 +97,16 @@ def post_and_commentaries_view(request, post_id):
         post_commentaries = post.commentaries.prefetch_related()    # находим все связанные комменты у данного поста
         print(post)
         print(post_commentaries)
+
+        try:
+            vote = Vote.objects.get(user=request.user, post=post)           # пытаемся найти оценку у дпнного поста данным пользователем
+        except Exception as e:                                              # если не нашли оценку, то будет исключение, тут перехватываем
+            vote = None                                                     # как бы оценки нет
+
         return render(
             template_name="posts_app/templates/post_and_commentaries.html",
             request=request,
-            context={"post": post, "post_commentaries": post_commentaries}      # отправляем шаблонизатору пост и его комменты
+            context={"post": post, "post_commentaries": post_commentaries, "vote": vote}      # отправляем шаблонизатору пост и его комменты
         )
     except Exception as e:
         print("Кто-то попытался поулчить несуществующий пост")
