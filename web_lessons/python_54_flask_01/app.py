@@ -62,8 +62,8 @@ def registration():
 
         error_messages = []                     # если данные не проходят валидацию, то тут будем писать что не так и потом отправим это клиенту
 
-        if username is None or password is None or password2 is None:       # если что-то из полей не пришло
-            error_messages.append("Все поля обязательны;")                   # добавляем в список ошибок такое сообщение
+        if username is None or password is None or password2 is None:           # если что-то из полей не пришло
+            error_messages.append("Все поля обязательны;")                      # добавляем в список ошибок такое сообщение
         if len(username) > 50:
             error_messages.append("Ник слишком длинный, должен быть до 50 символов;")    
         if password != password2:
