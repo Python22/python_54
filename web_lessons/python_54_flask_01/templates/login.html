@@ -1,0 +1,30 @@
+<!-- расширяем(подключаем базовый(родительский) шаблон) -->
+{% extends 'base.html' %}
+
+<!-- Что хотим вставить в родителськом шаблоне в блок title -->
+{% block title %}Вход в аккаунт{% endblock %}
+
+<!-- Что хотим вставить в родителськом шаблоне в блок css_block -->
+{% block css_block %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+<!-- Что вставляем в блок main_block -->
+{% block main_block %}
+<form action="" id="auth_form" method="post">
+    <table>
+        <tr>
+            <td><label for="username">Ваш никнейм:</label></td>
+            <td><input type="text" id="username" name="username" maxlength="50" required></td>
+        </tr>
+
+        <tr>
+            <td><label for="password">Пароль:</label></td>
+            <td><input type="password" id="password" name="password" maxlength="50" required></td>
+        </tr>
+
+    </table>
+    <input type="submit" id="auth_btn" value="Войти">
+    <ul id="auth_errors_container"></ul>
+</form>
+{% endblock %}

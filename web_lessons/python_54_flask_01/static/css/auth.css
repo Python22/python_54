@@ -1,0 +1,28 @@
+#auth_form {
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    background-color: black;
+    color: #98db7c;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px black;
+}
+#auth_btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    display: block;
+    background-color: #98db7c;
+    font-size: 20px;
+    border: 3px solid #008cdf;
+    border-radius: 5px;
+    padding: 5px;
+}
+#auth_btn:hover {
+    /* background: linear-gradient(to right, #98db7c, #008cdf); */
+    background: linear-gradient(#98db7c, #008cdf);
+    cursor: pointer;
+    box-shadow: 0 0 10px aqua;
+}

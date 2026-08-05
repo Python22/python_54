@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <!-- создаём блок для подключения других css файлов в дочерних шаблонах -->
     {% block css_block %}{% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/main_logo.png') }}" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav id="main_menu">
             <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/main_logo.png') }}" alt="main logo"></a>
-            <a href="{{ url_for('index') }}">Главная</a>
-            <a href="{{ url_for('game') }}">Одиночная игра</a>
-            <a href="{{ url_for('multiplayer') }}">Мультиплеер</a>
-            <a href="{{ url_for('hello') }}">hello</a>
+            <a href="{{ url_for('index') }}" class="main_menu_btn">Главная</a>
+            <a href="{{ url_for('game') }}" class="main_menu_btn">Одиночная игра</a>
+            <a href="{{ url_for('multiplayer') }}" class="main_menu_btn">Мультиплеер</a>
+            <a href="{{ url_for('hello') }}" class="main_menu_btn">hello</a>
         </nav>
     </header>
     

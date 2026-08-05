@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+header {
+    background-color: black;
+}
+#main_menu img {
+    height: 46px;
+}
+#main_menu {
+    display: flex;
+    justify-content: center;
+}
+.main_menu_btn {
+    font-size: 36px;
+    color: #98db7c;
+    text-decoration: none;
+    padding: 5px;
+}
+.main_menu_btn:hover {
+    text-shadow: 0 0 10px #98db7c;
+    color: greenyellow;
+    transition: 0.3s;
+}
+@keyframes main_logo_anim {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+#main_menu img:hover {
+    animation: main_logo_anim infinite;
+    animation-duration: 0.5s;
+    
+}
