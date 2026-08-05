@@ -21,3 +21,12 @@
 
 12) Запускаем сервер. В терминале:
     flask --app app.py run
+
+
+
+13) После описания таблиц:
+    В терминале:
+        flask db init
+        flask db migrate
+        flask db upgrade
+        
