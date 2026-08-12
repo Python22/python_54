@@ -26,3 +26,7 @@
     cursor: pointer;
     box-shadow: 0 0 10px aqua;
 }
+#auth_errors_container {
+    color: #008cdf;
+    list-style-type: none;
+}

@@ -15,7 +15,7 @@
     <table>
         <tr>
             <td><label for="username">Ваш никнейм:</label></td>
-            <td><input type="text" id="username" name="username" maxlength="50" required></td>
+            <td><input type="text" id="username" name="username" maxlength="50" required placeholder="от 1 до 50 символов"></td>
         </tr>
 
         <tr>
@@ -29,6 +29,11 @@
         </tr>
     </table>
     <input type="submit" id="auth_btn" value="Регистрация">
-    <ul id="auth_errors_container"></ul>
+    <ul id="auth_errors_container">
+        <!-- перебираем коллекцию ошибок из полученного контекста по его имени -->
+        {% for error in error_messages %}
+            <li>{{ error }}</li>            <!-- вставляем элемент списка с текстом ошибки -->
+        {% endfor %}
+    </ul>
 </form>
 {% endblock %}
