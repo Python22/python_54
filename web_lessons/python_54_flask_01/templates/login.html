@@ -25,6 +25,11 @@
 
     </table>
     <input type="submit" id="auth_btn" value="Войти">
-    <ul id="auth_errors_container"></ul>
+    <ul id="auth_errors_container">
+        <!-- перебираем коллекцию ошибок из полученного контекста по его имени -->
+        {% for error in error_messages %}
+            <li>{{ error }}</li>            <!-- вставляем элемент списка с текстом ошибки -->
+        {% endfor %}
+    </ul>
 </form>
 {% endblock %}

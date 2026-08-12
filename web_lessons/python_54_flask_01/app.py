@@ -145,7 +145,10 @@ def login():
 
 @app.route("/logout") 
 def logout():
-    pass
+    logout_user()                           # вызываем выход из аккаунта
+    return redirect(url_for("login"))       # перекидываем на страницу входа    
+
+
 @app.route("/user_page") 
 def user_page():
     return render_template(template_name_or_list="user_page.html")

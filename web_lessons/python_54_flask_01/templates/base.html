@@ -13,6 +13,7 @@
 </head>
 <body>
     <header>
+        <div id="hamburger_menu_btn"></div>  
         <nav id="main_menu">
             <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/main_logo.png') }}" alt="main logo"></a>
             <a href="{{ url_for('index') }}" class="main_menu_btn">Главная</a>
@@ -20,6 +21,16 @@
             <a href="{{ url_for('multiplayer') }}" class="main_menu_btn">Мультиплеер</a>
             <a href="{{ url_for('hello') }}" class="main_menu_btn">hello</a>
         </nav>
+        <div id="user_container">
+            <!-- Если пользователь авторизован -->
+            {% if current_user.is_authenticated %}
+                <span id="current_username">{{ current_user.username }}</span>
+                <a href="{{ url_for('logout') }}" class="auth_btn">Выход</a>
+            {% else %}  <!-- Если пользователь НЕ авторизован -->
+                <a href="{{ url_for('login') }}" class="auth_btn">Войти</a>
+                <a href="{{ url_for('registration') }}" class="auth_btn">Регистрация</a>
+            {% endif %}
+        </div>
     </header>
     
     <main>
