@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy                                     # д
 from flask_migrate import Migrate                                           # класс для создания/изменения таблиц в БД
 from flask_login import UserMixin, LoginManager, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash   # для генерации хеша пароля и его проверки
+import json
+import random
 
 
 app = Flask(__name__)                                                       # создаём объект приложения Flask, и даём ему имя нашего файла
@@ -16,6 +18,11 @@ migrate = Migrate(app=app, db=db)                                           # о
 
 login_manager = LoginManager(app=app)                                       # создаём объект логин менеджера из встроеннйо бибилиотеки
 login_manager.login_view = "/login"                                         # регистрируем страницу схода в аккаунт
+
+
+with open("clear_countries_data.json", "r", encoding="utf-8") as file:      # открываем файл с данными о странах в режиме чтения с кодировкой юникода
+    all_countries_data = json.load(file)                                    # читаём всё содержимое файла и преобразуем в питоновский список словарей
+    print("Успешно прочитали файл с данными о странах.")
 
 
 @login_manager.user_loader
@@ -47,7 +54,22 @@ def index():                                                    # то запу�
 
 @app.route("/game")                                             # если кто-то зашёл по адресу http://127.0.0.1:5000/game
 def game():                                                     # то запускается функция
-    return render_template(template_name_or_list="game.html")   # которая вернёт шаблон из папки tempaltes с таким названием
+    random_country = random.choice(all_countries_data)          # берём 1 случайный элемент из списка стран
+    # random_country будет иметь внутри себя словарь такого вида:
+    # {
+    #     "name": "Монголия",
+    #     "area": 1564110,
+    #     "population": 3278292,
+    #     "capital": "Ulan Bator",
+    #     "flag": "https://flagcdn.com/mn.svg"
+    #   }
+    return render_template(
+        template_name_or_list="game.html",                      # какой шаблон отправить
+        flag_url=random_country["flag"],                        # ссылка на флаг, которую вставим в шаблоне
+        area=random_country["area"],                            # площадь
+        population=random_country["population"],                # население
+        capital=random_country["capital"]                       # столица
+    )   # которая вернёт шаблон из папки templates с таким названием
 
 
 @app.route("/check_answer")

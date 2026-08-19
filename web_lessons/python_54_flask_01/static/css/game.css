@@ -1,0 +1,50 @@
+h1 {
+    text-align: center;
+}
+#country_container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: #98db7c;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #98db7c;
+}
+#country_flag_elem {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    border: 3px solid #98db7c;
+}
+#country_container table {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+}
+#country_container table td {
+    padding-left: 10px;
+}
+#user_answer_input, #check_answer_btn {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+#check_answer_btn {
+    background-color: #008cdf;
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+}
+#check_answer_btn:hover {
+    background: linear-gradient(#98db7c, #008cdf);
+    box-shadow: 0 0 5px #008cdf;
+    cursor: pointer;
+}
+#user_answer_input {
+    font-size: 20px;
+}

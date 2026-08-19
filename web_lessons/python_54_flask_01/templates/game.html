@@ -4,7 +4,37 @@
 <!-- Что хотим вставить в родителськом шаблоне в блок title -->
 {% block title %}Игра{% endblock %}
 
+{% block css_block %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+{% endblock %}
+
 <!-- Что вставляем в блок main_block -->
 {% block main_block %}
-<h1>ИГРА</h1>
+<h1>Угадай страну</h1>
+<div id="country_container">
+    <img src="{{ flag_url }}" alt="флаг страны" id="country_flag_elem">
+    <table>
+        <tr>
+            <td>Столица:</td>
+            <td id="capital_elem">{{ capital }}</td>
+        </tr>
+        <tr>
+            <td>Площадь:</td>
+            <td id="area_elem">{{ area }} млн км²</td>
+        </tr>
+        <tr>
+            <td>Население:</td>
+            <td id="population_elem">{{ population }} чел.</td>
+        </tr>
+    </table>
+    <form action="" id="user_answer_form" method="get">
+        <input type="text" id="user_answer_input" name="user_answer_input" required maxlength="255" placeholder="Введите название страны">
+        <br>
+        <input type="submit" value="Проверить!" id="check_answer_btn">
+    </form>
+</div>
+{% endblock %}
+
+{% block js_block %}
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
 {% endblock %}
